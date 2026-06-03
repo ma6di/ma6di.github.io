@@ -340,7 +340,7 @@ footer a:hover { text-decoration: underline; }
     <div class="card" onclick="showProject('flewi')">
       <div class="card-arrow">→</div>
       <div class="card-body">
-        <h3>📱 Flewi</h3>
+        <h3><img src="media/icon-ios.png" style="width:22px;height:22px;border-radius:5px;vertical-align:middle;margin-right:5px">Flewi</h3>
         <p>Language learning platform built with React Native, FastAPI, PostgreSQL and Redis. Designed, developed and launched on the Apple App Store.</p>
         <div class="tech">
           <span class="tag">React Native</span>
@@ -497,7 +497,8 @@ footer a:hover { text-decoration: underline; }
 <script>
 const projects = {
   flewi: {
-    emoji: '📱',
+    emoji: '<img src="media/icon-ios.png" style="width:36px;height:36px;border-radius:8px;vertical-align:middle">',
+    emojiIsHtml: true,
     title: 'Flewi',
     badge: '🚀 Live on App Store',
     subtitle: 'A language learning platform designed from the ground up — from idea to App Store launch.',
@@ -759,7 +760,7 @@ function renderProject(id) {
   bannerImg.alt = p.title;
   bannerImg.style.cssText = (p.bannerStyle || '') + ';display:block;width:100%;height:100%';
   bannerPlaceholder.style.display = 'none';
-  bannerPlaceholder.textContent = p.emoji;
+  if (p.emojiIsHtml) { bannerPlaceholder.innerHTML = p.emoji; } else { bannerPlaceholder.textContent = p.emoji; }
 
   // Meta
   document.getElementById('proj-badge').textContent = p.badge;
