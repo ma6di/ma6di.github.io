@@ -230,7 +230,7 @@ footer a:hover { text-decoration: underline; }
 .project-banner-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .project-banner-placeholder {
@@ -502,6 +502,7 @@ const projects = {
     badge: '🚀 Live on App Store',
     subtitle: 'A language learning platform designed from the ground up — from idea to App Store launch.',
     banner: 'media/Flewi.png',
+    bannerStyle: 'object-fit:contain;background:#f5f3ee',
     links: [
       { label: 'View on App Store →', href: 'https://apps.apple.com/us/app/flewi/id6761818741', primary: true },
       { label: 'GitHub (Public Repo) →', href: 'https://github.com/ma6di/Flewi-public' }
@@ -538,6 +539,7 @@ const projects = {
     badge: '42 Berlin · Capstone Project',
     subtitle: 'A full-stack real-time Pong platform with 3D graphics, tournament brackets, 2FA, i18n in 5 languages, and a production-grade observability stack.',
     banner: 'media/ft_transcendence.png',
+    bannerStyle: 'object-fit:contain;background:#000',
     links: [
       { label: 'GitHub Repository →', href: 'https://github.com/ma6di/ft_transcendence' }
     ],
@@ -581,6 +583,7 @@ const projects = {
     badge: '42 Berlin · Systems Project',
     subtitle: 'A non-blocking HTTP/1.1 server built from scratch in C++ — fully RFC-compliant with CGI, uploads, and custom routing.',
     banner: 'media/Webserv.png',
+    bannerStyle: 'object-fit:contain;background:#f5f3ee',
     links: [],
     content: `
       <div class="detail-section">
@@ -614,6 +617,7 @@ const projects = {
     badge: '42 Berlin · Systems Project',
     subtitle: 'A Bash-like Unix shell built in C — with lexing, tokenization, an AST parser, pipes, redirections, and all essential built-ins.',
     banner: 'media/Minishell.png',
+    bannerStyle: 'object-fit:contain;background:#f5f3ee',
     links: [
       { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Minishell' }
     ],
@@ -658,6 +662,7 @@ const projects = {
     badge: '42 Berlin · Graphics Project',
     subtitle: 'A Wolfenstein 3D-inspired FPS using raycasting — with enemy AI, combat, minimap, textured environments and sliding doors.',
     banner: 'media/Cub3D.png',
+    bannerStyle: 'object-fit:contain;background:#f97316',
     links: [
       { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Cub3D' }
     ],
@@ -704,6 +709,7 @@ const projects = {
     badge: '42 Berlin · Concurrency Project',
     subtitle: 'The classic Dining Philosophers problem solved with POSIX threads and mutexes — zero deadlocks, zero race conditions.',
     banner: 'media/Philosophers.png',
+    bannerStyle: 'object-fit:contain;background:#f5f3ee',
     links: [
       { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Philosophers' }
     ],
@@ -751,7 +757,7 @@ function renderProject(id) {
   const bannerPlaceholder = document.getElementById('proj-banner-placeholder');
   bannerImg.src = p.banner;
   bannerImg.alt = p.title;
-  bannerImg.style.display = 'block';
+  bannerImg.style.cssText = (p.bannerStyle || '') + ';display:block;width:100%;height:100%';
   bannerPlaceholder.style.display = 'none';
   bannerPlaceholder.textContent = p.emoji;
 
