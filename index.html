@@ -3,413 +3,807 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Mahdi Cheraghali | Software Engineer</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#f8f7f4;
-  --card:#ffffff;
-  --text:#171717;
-  --muted:#6b7280;
-  --accent:#0f766e;
-  --border:#e5e7eb;
+:root {
+  --bg: #f5f3ee;
+  --card: #ffffff;
+  --text: #141414;
+  --muted: #6b6b6b;
+  --accent: #0f766e;
+  --accent-light: #ccfbf1;
+  --border: #e2e0da;
+  --tag-bg: #eeecea;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
 }
 
-html{
-  scroll-behavior:smooth;
+h1, h2, h3, .section-title {
+  font-family: 'Syne', sans-serif;
 }
 
-body{
-  font-family:Inter,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
+.container { max-width: 1100px; margin: auto; padding: 0 28px; }
+
+/* ── PAGE TRANSITIONS ── */
+.page { display: none; animation: fadeIn .35s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245,243,238,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-back {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--accent); }
+.nav-back svg { width: 16px; height: 16px; }
+
+/* ── HERO ── */
+header { padding: 72px 0 36px; }
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 64px;
+  align-items: center;
+}
+.avatar {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  filter: grayscale(5%);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid #99f6e4;
+  font-size: .85rem;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+h1 {
+  font-size: 3.6rem;
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  margin-bottom: 18px;
+}
+.subtitle {
+  max-width: 580px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+.buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: .9rem;
+  transition: all .2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #0d665f; transform: translateY(-2px); }
+.btn-secondary { border: 1px solid var(--border); color: var(--text); background: white; }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ── SECTIONS ── */
+section { padding: 42px 0; }
+.section-title {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+.about { max-width: 760px; color: var(--muted); font-size: 1.02rem; }
+
+/* ── PROJECT GRID ── */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative;
+}
+.card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 32px rgba(15,118,110,.08); }
+
+.card-banner {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  background: var(--tag-bg);
+}
+.card-banner-placeholder {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:0 24px;
+.card-body { padding: 20px 22px 22px; }
+.card h3 { margin-bottom: 8px; font-size: 1.1rem; font-family: 'Syne', sans-serif; font-weight: 700; }
+.card p { color: var(--muted); font-size: .92rem; line-height: 1.6; }
+
+.tech { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { padding: 4px 10px; border-radius: 999px; background: var(--tag-bg); font-size: .78rem; font-weight: 500; }
+
+.card-arrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.card:hover .card-arrow { opacity: 1; }
+
+/* ── SKILLS ── */
+.skills { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill { padding: 9px 14px; background: white; border: 1px solid var(--border); border-radius: 10px; font-size: .88rem; font-weight: 500; }
+
+/* ── FOOTER ── */
+footer { padding: 70px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); margin-top: 20px; }
+footer p { margin-bottom: 4px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════
+   PROJECT DETAIL PAGE
+═══════════════════════════════════════ */
+#page-project { padding-bottom: 80px; }
+
+.project-hero {
+  padding: 48px 0 0;
+}
+.project-banner-wrap {
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 40px;
+  background: var(--tag-bg);
+}
+.project-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.project-banner-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
 }
 
-header{
-  padding:80px 0 40px;
+.project-meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
 }
-
-.hero{
-  display:grid;
-  grid-template-columns:1fr 260px;
-  gap:60px;
-  align-items:center;
+.project-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 12px;
 }
+.project-subtitle { color: var(--muted); font-size: 1.05rem; max-width: 580px; }
+.project-links { display: flex; flex-direction: column; gap: 10px; min-width: 160px; }
 
-.avatar{
-  width:240px;
-  border-radius:24px;
-  border:1px solid var(--border);
+.detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+.detail-section { margin-bottom: 32px; }
+.detail-section h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 12px; }
+.detail-section p, .detail-section li { color: var(--muted); font-size: .97rem; line-height: 1.75; }
+.detail-section ul { padding-left: 18px; }
+.detail-section li { margin-bottom: 6px; }
+
+.info-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
 }
+.info-card h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .9rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.info-card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-.badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#ecfdf5;
-  color:var(--accent);
-  border:1px solid #a7f3d0;
-  font-size:.9rem;
-  margin-bottom:24px;
+.divider { height: 1px; background: var(--border); margin: 8px 0 24px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .avatar { width: 160px; height: 160px; }
+  h1 { font-size: 2.6rem; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .project-meta { grid-template-columns: 1fr; }
+  .project-title { font-size: 2.2rem; }
+  .project-banner-wrap { height: 220px; }
 }
-
-h1{
-  font-size:4rem;
-  line-height:1.05;
-  font-weight:800;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-
-.subtitle{
-  max-width:650px;
-  color:var(--muted);
-  font-size:1.15rem;
-  margin-bottom:30px;
-}
-
-.buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  text-decoration:none;
-  padding:12px 20px;
-  border-radius:12px;
-  font-weight:600;
-  transition:.2s;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:white;
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-}
-
-.btn-secondary{
-  border:1px solid var(--border);
-  color:var(--text);
-  background:white;
-}
-
-section{
-  padding:45px 0;
-}
-
-.section-title{
-  font-size:1.8rem;
-  margin-bottom:20px;
-  letter-spacing:-1px;
-}
-
-.about{
-  max-width:800px;
-  color:var(--muted);
-  font-size:1.05rem;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:24px;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:var(--accent);
-}
-
-.card h3{
-  margin-bottom:10px;
-}
-
-.card p{
-  color:var(--muted);
-}
-
-.tech{
-  margin-top:15px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.tag{
-  padding:6px 10px;
-  border-radius:999px;
-  background:#f3f4f6;
-  font-size:.8rem;
-}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.skill{
-  padding:10px 14px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-
-.link{
-  color:var(--accent);
-  text-decoration:none;
-}
-
-.link:hover{
-  text-decoration:underline;
-}
-
-footer{
-  padding:80px 0;
-  text-align:center;
-  color:var(--muted);
-}
-
-@media(max-width:800px){
-
-.hero{
-  grid-template-columns:1fr;
-}
-
-.avatar{
-  width:180px;
-}
-
-h1{
-  font-size:2.8rem;
-}
-
-}
-
 </style>
 </head>
-
 <body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo" onclick="showHome()">mc<span>.</span></div>
+    <div class="nav-back" id="nav-back" onclick="showHome()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to projects
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════ HOME PAGE ══════════════════════════════════ -->
+<div class="page active" id="page-home">
 
 <header>
 <div class="container">
-
 <div class="hero">
-
-<div>
-
-<div class="badge">
-🚀 Creator of Flewi • Available on the App Store
+  <div>
+    <div class="badge">🚀 Creator of Flewi • Available on the App Store</div>
+    <h1>Building software that solves real-world problems.</h1>
+    <p class="subtitle">I'm Mahdi, a software engineer based in Berlin. I build full-stack applications, backend systems, mobile products, and AI-powered workflows focused on usability, performance, and real-world impact.</p>
+    <div class="buttons">
+      <a href="https://github.com/ma6di" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+      <a href="https://www.linkedin.com/in/mahdi-cheraghali" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+      <a href="https://apps.apple.com/us/app/flewi/id6761818741" target="_blank" rel="noopener" class="btn btn-secondary">Flewi App Store</a>
+    </div>
+  </div>
+  <div>
+    <img src="https://github.com/ma6di.png" class="avatar" alt="Mahdi Cheraghali">
+  </div>
 </div>
-
-<h1>
-Building software that solves real-world problems.
-</h1>
-
-<p class="subtitle">
-I'm Mahdi, a software engineer based in Berlin. I build full-stack applications, backend systems, mobile products, and AI-powered workflows focused on usability, performance, and real-world impact.
-</p>
-
-<div class="buttons">
-<a href="https://github.com/ma6di" class="btn btn-primary">
-GitHub
-</a>
-
-<a href="https://www.linkedin.com/in/mahdi-cheraghali" class="btn btn-secondary">
-LinkedIn
-</a>
-
-<a href="https://apps.apple.com/us/app/flewi/id6761818741" class="btn btn-secondary">
-Flewi App Store
-</a>
-</div>
-
-</div>
-
-<div>
-<img src="https://github.com/ma6di.png" class="avatar" alt="Mahdi">
-</div>
-
-</div>
-
 </div>
 </header>
 
 <section>
 <div class="container">
-
-<h2 class="section-title">
-About Me
-</h2>
-
-<p class="about">
-I have a background in Computer Science and Construction & Real Estate Management. My work spans backend development, mobile applications, automation systems, performance optimization, and AI-assisted products.
-
-I enjoy taking ideas from concept to production, whether that's building APIs, designing user workflows, integrating external services, or improving reliability and scalability.
-</p>
-
+  <h2 class="section-title">About Me</h2>
+  <p class="about">I have a background in Computer Science and Construction & Real Estate Management. My work spans backend development, mobile applications, automation systems, performance optimization, and AI-assisted products. I enjoy taking ideas from concept to production, whether that's building APIs, designing user workflows, integrating external services, or improving reliability and scalability.</p>
 </div>
 </section>
 
 <section>
 <div class="container">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="grid" id="project-grid">
 
-<h2 class="section-title">
-Featured Projects
-</h2>
+    <div class="card" onclick="showProject('flewi')">
+      <div class="card-arrow">→</div>
+      <img src="media/Flewi.png" class="card-banner" alt="Flewi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">📱</div>
+      <div class="card-body">
+        <h3>📱 Flewi</h3>
+        <p>Language learning platform built with React Native, FastAPI, PostgreSQL and Redis. Designed, developed and launched on the Apple App Store.</p>
+        <div class="tech">
+          <span class="tag">React Native</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+    </div>
 
-<div class="grid">
+    <div class="card" onclick="showProject('transcendence')">
+      <div class="card-arrow">→</div>
+      <img src="media/ft_transcendence.png" class="card-banner" alt="ft_transcendence" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">🎮</div>
+      <div class="card-body">
+        <h3>🎮 ft_transcendence</h3>
+        <p>Real-time multiplayer platform featuring authentication, monitoring, observability, APIs and scalable backend services.</p>
+        <div class="tech">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Docker</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">JWT</span>
+        </div>
+      </div>
+    </div>
 
-<div class="card">
-<h3>📱 Flewi</h3>
+    <div class="card" onclick="showProject('webserv')">
+      <div class="card-arrow">→</div>
+      <img src="media/Webserv.png" class="card-banner" alt="Webserv" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">⚙️</div>
+      <div class="card-body">
+        <h3>⚙️ Webserv</h3>
+        <p>Built a non-blocking HTTP server in C++ supporting CGI, uploads, routing, concurrent connections and custom configuration.</p>
+        <div class="tech">
+          <span class="tag">C++</span>
+          <span class="tag">Linux</span>
+          <span class="tag">HTTP</span>
+        </div>
+      </div>
+    </div>
 
-<p>
-Language learning platform built with React Native, FastAPI, PostgreSQL and Redis. Designed, developed and launched on the Apple App Store.
-</p>
+    <div class="card" onclick="showProject('minishell')">
+      <div class="card-arrow">→</div>
+      <img src="media/Minishell.png" class="card-banner" alt="Minishell" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">🐚</div>
+      <div class="card-body">
+        <h3>🐚 Minishell</h3>
+        <p>A miniature Unix shell replicating Bash — with lexing, parsing, pipes, redirections, environment handling and built-in commands.</p>
+        <div class="tech">
+          <span class="tag">C</span>
+          <span class="tag">Unix</span>
+          <span class="tag">42 Berlin</span>
+        </div>
+      </div>
+    </div>
 
-<div class="tech">
-<span class="tag">React Native</span>
-<span class="tag">FastAPI</span>
-<span class="tag">PostgreSQL</span>
-<span class="tag">Redis</span>
-</div>
+    <div class="card" onclick="showProject('cub3d')">
+      <div class="card-arrow">→</div>
+      <img src="media/Cub3D.png" class="card-banner" alt="Cub3D" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">🎮</div>
+      <div class="card-body">
+        <h3>🕹️ Cub3D</h3>
+        <p>Wolfenstein-inspired raycasting FPS game with enemy AI, minimap, weapon system, textured environments and sliding doors.</p>
+        <div class="tech">
+          <span class="tag">C</span>
+          <span class="tag">Raycasting</span>
+          <span class="tag">42 Berlin</span>
+        </div>
+      </div>
+    </div>
 
-<br>
+    <div class="card" onclick="showProject('philosophers')">
+      <div class="card-arrow">→</div>
+      <img src="media/Philosophers.png" class="card-banner" alt="Philosophers" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-banner-placeholder" style="display:none">🧠</div>
+      <div class="card-body">
+        <h3>🧠 Philosophers</h3>
+        <p>The classic Dining Philosophers concurrency problem solved with threads and mutexes — no deadlocks, no race conditions, no starvation.</p>
+        <div class="tech">
+          <span class="tag">C</span>
+          <span class="tag">Threads</span>
+          <span class="tag">Mutexes</span>
+          <span class="tag">42 Berlin</span>
+        </div>
+      </div>
+    </div>
 
-<a class="link"
-href="https://apps.apple.com/us/app/flewi/id6761818741">
-View on App Store →
-</a>
-
-</div>
-
-<div class="card">
-<h3>🎮 ft_transcendence</h3>
-
-<p>
-Real-time multiplayer platform featuring authentication, monitoring, observability, APIs and scalable backend services.
-</p>
-
-<div class="tech">
-<span class="tag">TypeScript</span>
-<span class="tag">Docker</span>
-<span class="tag">PostgreSQL</span>
-<span class="tag">JWT</span>
-</div>
-
-</div>
-
-<div class="card">
-<h3>⚙️ Webserv</h3>
-
-<p>
-Built a non-blocking HTTP server in C++ supporting CGI, uploads, routing, concurrent connections and custom configuration.
-</p>
-
-<div class="tech">
-<span class="tag">C++</span>
-<span class="tag">Linux</span>
-<span class="tag">HTTP</span>
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </div>
 </section>
 
 <section>
 <div class="container">
-
-<h2 class="section-title">
-Tech Stack
-</h2>
-
-<div class="skills">
-
-<div class="skill">Python</div>
-<div class="skill">TypeScript</div>
-<div class="skill">JavaScript</div>
-<div class="skill">C</div>
-<div class="skill">C++</div>
-<div class="skill">React</div>
-<div class="skill">React Native</div>
-<div class="skill">FastAPI</div>
-<div class="skill">PostgreSQL</div>
-<div class="skill">Redis</div>
-<div class="skill">Docker</div>
-<div class="skill">Git</div>
-<div class="skill">Linux</div>
-<div class="skill">REST APIs</div>
-<div class="skill">SQL</div>
-<div class="skill">AI APIs</div>
-<div class="skill">Automation</div>
-
-</div>
-
+  <h2 class="section-title">Tech Stack</h2>
+  <div class="skills">
+    <div class="skill">Python</div>
+    <div class="skill">TypeScript</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">C</div>
+    <div class="skill">C++</div>
+    <div class="skill">React</div>
+    <div class="skill">React Native</div>
+    <div class="skill">FastAPI</div>
+    <div class="skill">PostgreSQL</div>
+    <div class="skill">Redis</div>
+    <div class="skill">Docker</div>
+    <div class="skill">Git</div>
+    <div class="skill">Linux</div>
+    <div class="skill">REST APIs</div>
+    <div class="skill">SQL</div>
+    <div class="skill">AI APIs</div>
+    <div class="skill">Automation</div>
+  </div>
 </div>
 </section>
 
 <section>
 <div class="container">
-
-<h2 class="section-title">
-Currently Exploring
-</h2>
-
-<p class="about">
-AI agents, LLM-powered applications, scalable backend architectures, mobile product development, and automation systems that reduce manual work.
-</p>
-
+  <h2 class="section-title">Currently Exploring</h2>
+  <p class="about">AI agents, LLM-powered applications, scalable backend architectures, mobile product development, and automation systems that reduce manual work.</p>
 </div>
 </section>
 
 <footer>
-
-<p>
-Mahdi Cheraghali
-</p>
-
-<p>
-Berlin, Germany
-</p>
-
-<p>
-mahdi.cheraghali@gmail.com
-</p>
-
+  <p><strong>Mahdi Cheraghali</strong></p>
+  <p>Berlin, Germany</p>
+  <p><a href="mailto:mahdi.cheraghali@gmail.com">mahdi.cheraghali@gmail.com</a></p>
 </footer>
+
+</div><!-- end #page-home -->
+
+
+<!-- ══════════════════════════════════ PROJECT DETAIL PAGE ══════════════════════════════════ -->
+<div class="page" id="page-project">
+<div class="container">
+  <div class="project-hero">
+
+    <div class="project-banner-wrap">
+      <img id="proj-banner" src="" alt="" class="project-banner-img" onerror="this.style.display='none';document.getElementById('proj-banner-placeholder').style.display='flex'">
+      <div id="proj-banner-placeholder" class="project-banner-placeholder" style="display:none"></div>
+    </div>
+
+    <div class="project-meta">
+      <div>
+        <div id="proj-badge" class="badge" style="margin-bottom:16px"></div>
+        <div id="proj-title" class="project-title"></div>
+        <div id="proj-subtitle" class="project-subtitle"></div>
+      </div>
+      <div class="project-links" id="proj-links"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="detail-grid">
+      <div id="proj-content"></div>
+      <div id="proj-sidebar"></div>
+    </div>
+
+  </div>
+</div>
+</div><!-- end #page-project -->
+
+
+<script>
+const projects = {
+  flewi: {
+    emoji: '📱',
+    title: 'Flewi',
+    badge: '🚀 Live on App Store',
+    subtitle: 'A language learning platform designed from the ground up — from idea to App Store launch.',
+    banner: 'media/Flewi.png',
+    links: [
+      { label: 'View on App Store →', href: 'https://apps.apple.com/us/app/flewi/id6761818741', primary: true },
+      { label: 'GitHub (Public Repo) →', href: 'https://github.com/ma6di/Flewi-public' }
+    ],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>Flewi is a language learning mobile application that I designed, built, and launched independently on the Apple App Store. It combines spaced repetition, interactive exercises, and a clean UX to make language acquisition engaging and effective.</p>
+      </div>
+      <div class="detail-section">
+        <h3>What I Built</h3>
+        <ul>
+          <li>Full cross-platform mobile app with React Native (iOS & Android compatible)</li>
+          <li>FastAPI backend with RESTful API design and async endpoints</li>
+          <li>PostgreSQL database with efficient schema design for user progress tracking</li>
+          <li>Redis caching layer for fast session and leaderboard data</li>
+          <li>Complete App Store submission — provisioning, review, and launch</li>
+          <li>User authentication, progress tracking, and personalized learning paths</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Challenges</h3>
+        <p>Taking a solo product from zero to App Store involved every layer of the stack — UI/UX design, mobile development, backend architecture, deployment, and navigating Apple's review process. Optimizing API response times for mobile users and designing a data model that supports flexible learning content were key engineering challenges.</p>
+      </div>
+    `,
+    stack: ['React Native', 'FastAPI', 'PostgreSQL', 'Redis', 'Python', 'TypeScript'],
+    type: 'Mobile App · Full-Stack',
+    status: 'Live on App Store'
+  },
+
+  transcendence: {
+    emoji: '🎮',
+    title: 'ft_transcendence',
+    badge: '42 Berlin · Capstone Project',
+    subtitle: 'A real-time multiplayer platform with authentication, live game engine, observability, and scalable microservices.',
+    banner: 'media/ft_transcendence.png',
+    links: [
+      { label: 'GitHub Repository →', href: 'https://github.com/ma6di/ft_transcendence' }
+    ],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>ft_transcendence is the capstone project of the 42 curriculum — a full-featured real-time web application built from scratch with a focus on security, scalability, and observability. It includes a live Pong game engine, user authentication with 2FA, friend systems, and a chat.</p>
+      </div>
+      <div class="detail-section">
+        <h3>Key Features</h3>
+        <ul>
+          <li>Real-time multiplayer Pong with WebSocket game engine</li>
+          <li>JWT-based authentication + Two-Factor Authentication (2FA)</li>
+          <li>User profiles, friend requests, and match history</li>
+          <li>Live chat system with channels, direct messages, and moderation</li>
+          <li>Full observability stack: monitoring, metrics, alerting</li>
+          <li>Containerised with Docker Compose for reproducible deployment</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Architecture</h3>
+        <p>The project uses a microservices-inspired layout with separate services for auth, game, chat, and frontend. All services communicate via REST and WebSocket, containerised with Docker Compose. Security hardening was a core requirement throughout.</p>
+      </div>
+    `,
+    stack: ['TypeScript', 'Docker', 'PostgreSQL', 'JWT', 'WebSockets', 'REST APIs'],
+    type: 'Full-Stack · Real-Time',
+    status: '42 Berlin Curriculum'
+  },
+
+  webserv: {
+    emoji: '⚙️',
+    title: 'Webserv',
+    badge: '42 Berlin · Systems Project',
+    subtitle: 'A non-blocking HTTP/1.1 server built from scratch in C++ — fully RFC-compliant with CGI, uploads, and custom routing.',
+    banner: 'media/Webserv.png',
+    links: [],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>Webserv is a production-grade HTTP server written in C++ without using any existing web server libraries. The goal was to deeply understand how HTTP servers work under the hood — event loops, socket management, request parsing, and response generation.</p>
+      </div>
+      <div class="detail-section">
+        <h3>What Was Implemented</h3>
+        <ul>
+          <li>Non-blocking I/O using <code>poll()</code> / <code>epoll()</code> for concurrent connections</li>
+          <li>Full HTTP/1.1 request parsing (GET, POST, DELETE)</li>
+          <li>CGI execution for dynamic content (Python, PHP scripts)</li>
+          <li>File upload handling with multipart/form-data</li>
+          <li>Configurable virtual hosts, routes, and error pages via config file</li>
+          <li>Chunked transfer encoding and persistent connections</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>What I Learned</h3>
+        <p>Building a server from raw sockets taught me how HTTP actually works at every layer — from TCP handshakes to response headers. Debugging race conditions and non-blocking edge cases significantly deepened my systems programming skills.</p>
+      </div>
+    `,
+    stack: ['C++', 'Linux', 'HTTP/1.1', 'Sockets', 'CGI', 'Makefile'],
+    type: 'Systems Programming',
+    status: '42 Berlin Curriculum'
+  },
+
+  minishell: {
+    emoji: '🐚',
+    title: 'Minishell',
+    badge: '42 Berlin · Systems Project',
+    subtitle: 'A Bash-like Unix shell built in C — with lexing, tokenization, an AST parser, pipes, redirections, and all essential built-ins.',
+    banner: 'media/Minishell.png',
+    links: [
+      { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Minishell' }
+    ],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>Minishell is a miniature but feature-complete Unix shell developed as part of the 42 Berlin curriculum. It replicates many core Bash behaviours — processing raw input through multiple stages of analysis before executing commands.</p>
+      </div>
+      <div class="detail-section">
+        <h3>How It Works</h3>
+        <ul>
+          <li><strong>Lexing:</strong> Raw input scanned character-by-character into meaningful units</li>
+          <li><strong>Tokenization:</strong> Lexemes categorised into WORD, PIPE, REDIRECT, ENV_VAR, etc.</li>
+          <li><strong>Parsing:</strong> Tokens assembled into an Abstract Syntax Tree (AST)</li>
+          <li><strong>Execution:</strong> AST traversal with fork/exec, pipe chaining, and redirection</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Features</h3>
+        <ul>
+          <li>Built-in commands: <code>echo</code>, <code>cd</code>, <code>pwd</code>, <code>export</code>, <code>unset</code>, <code>env</code>, <code>exit</code></li>
+          <li>Redirection operators: <code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code>, heredoc (<code>&lt;&lt;</code>)</li>
+          <li>Pipes to connect commands in sequence</li>
+          <li>Environment variable expansion and inheritance</li>
+          <li>Signal handling: Ctrl+C, Ctrl+D, Ctrl+\\ (matching Bash behaviour)</li>
+          <li>Command history via readline</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Collaborator</h3>
+        <p>Built in collaboration with <a href="https://github.com/Nat-Ma" target="_blank" rel="noopener" style="color:var(--accent)">@Nat-Ma</a>.</p>
+      </div>
+    `,
+    stack: ['C', 'Unix', 'readline', 'Makefile', 'AST', 'fork/exec'],
+    type: 'Systems Programming',
+    status: '42 Berlin Curriculum'
+  },
+
+  cub3d: {
+    emoji: '🕹️',
+    title: 'Cub3D',
+    badge: '42 Berlin · Graphics Project',
+    subtitle: 'A Wolfenstein 3D-inspired FPS using raycasting — with enemy AI, combat, minimap, textured environments and sliding doors.',
+    banner: 'media/Cub3D.png',
+    links: [
+      { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Cub3D' }
+    ],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>Cub3D is a pseudo-3D game inspired by Wolfenstein 3D, built entirely in C using the MLX graphics library. The engine uses the raycasting technique — casting rays from the player's viewpoint to determine wall distances and render a 3D perspective in real-time.</p>
+      </div>
+      <div class="detail-section">
+        <h3>Core Engine</h3>
+        <ul>
+          <li>Raycasting-based 3D renderer with textured walls, floor, and ceiling</li>
+          <li>Skybox texture for realistic sky rendering</li>
+          <li>Player movement (WASD) and mouse rotation</li>
+          <li>Map system using <code>.cub</code> config files</li>
+          <li>Interactive minimap for navigation</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Bonus Features</h3>
+        <ul>
+          <li>Enemy AI: 2D sprites that detect and chase the player</li>
+          <li>Weapon system with shooting mechanics (Left Ctrl)</li>
+          <li>Enemies deal health damage on contact; bullets deal damage to sprites</li>
+          <li>Sliding doors (Space bar to open/close)</li>
+          <li>HUD displaying player health and ammo</li>
+          <li>Two full map designs: office (old computers as enemies) and space (robots as enemies)</li>
+          <li>Objective: find the key 🔑 and unlock the final door 🚪</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Collaborator</h3>
+        <p>Built in collaboration with <a href="https://github.com/Berryfeels" target="_blank" rel="noopener" style="color:var(--accent)">@Berryfeels</a>.</p>
+      </div>
+    `,
+    stack: ['C', 'MLX', 'Raycasting', 'Makefile', 'Linux', 'macOS'],
+    type: 'Graphics · Game Dev',
+    status: '42 Berlin Curriculum'
+  },
+
+  philosophers: {
+    emoji: '🧠',
+    title: 'Philosophers',
+    badge: '42 Berlin · Concurrency Project',
+    subtitle: 'The classic Dining Philosophers problem solved with POSIX threads and mutexes — zero deadlocks, zero race conditions.',
+    banner: 'media/Philosophers.png',
+    links: [
+      { label: 'GitHub Repository →', href: 'https://github.com/ma6di/Philosophers' }
+    ],
+    content: `
+      <div class="detail-section">
+        <h3>Overview</h3>
+        <p>The Dining Philosophers problem is a classic computer science thought experiment illustrating synchronisation challenges. Five philosophers sit at a round table and must share forks to eat — requiring careful concurrency control to prevent deadlock and starvation.</p>
+      </div>
+      <div class="detail-section">
+        <h3>The Problem</h3>
+        <ul>
+          <li>Each philosopher cycles between <strong>thinking 🧠</strong>, <strong>eating 🍝</strong>, and <strong>sleeping 😴</strong></li>
+          <li>Eating requires picking up both the left and right fork (shared resources)</li>
+          <li>Must prevent: deadlock (all waiting forever), starvation (one never eats), race conditions</li>
+          <li>Implemented with POSIX threads only — no semaphores</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>Implementation</h3>
+        <ul>
+          <li>Each philosopher is an independent <strong>thread</strong></li>
+          <li>Each fork is a <strong>mutex</strong> (mutual exclusion lock)</li>
+          <li>A dedicated <strong>monitor thread</strong> checks death conditions in real-time</li>
+          <li>Configurable via command-line: number of philosophers, time-to-die, time-to-eat, time-to-sleep</li>
+          <li>Optional argument to stop after N meals per philosopher</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <h3>What This Teaches</h3>
+        <p>This project is a deep dive into concurrent programming — thread lifecycle, mutex locking strategies, timing precision with <code>gettimeofday</code>, and avoiding the subtle bugs that arise when shared state is accessed concurrently.</p>
+      </div>
+    `,
+    stack: ['C', 'POSIX Threads', 'Mutexes', 'Makefile', 'Concurrency'],
+    type: 'Systems Programming · Concurrency',
+    status: '42 Berlin Curriculum'
+  }
+};
+
+function showProject(id) {
+  const p = projects[id];
+  if (!p) return;
+
+  // Banner
+  const bannerImg = document.getElementById('proj-banner');
+  const bannerPlaceholder = document.getElementById('proj-banner-placeholder');
+  bannerImg.src = p.banner;
+  bannerImg.alt = p.title;
+  bannerImg.style.display = 'block';
+  bannerPlaceholder.style.display = 'none';
+  bannerPlaceholder.textContent = p.emoji;
+
+  // Meta
+  document.getElementById('proj-badge').textContent = p.badge;
+  document.getElementById('proj-title').textContent = p.title;
+  document.getElementById('proj-subtitle').textContent = p.subtitle;
+
+  // Links
+  const linksEl = document.getElementById('proj-links');
+  linksEl.innerHTML = p.links.map(l =>
+    `<a href="${l.href}" target="_blank" rel="noopener" class="btn ${l.primary ? 'btn-primary' : 'btn-secondary'}">${l.label}</a>`
+  ).join('');
+
+  // Content
+  document.getElementById('proj-content').innerHTML = p.content;
+
+  // Sidebar
+  document.getElementById('proj-sidebar').innerHTML = `
+    <div class="info-card">
+      <h4>Type</h4>
+      <p style="color:var(--text);font-weight:500">${p.type}</p>
+    </div>
+    <div class="info-card">
+      <h4>Status</h4>
+      <p style="color:var(--accent);font-weight:500">${p.status}</p>
+    </div>
+    <div class="info-card">
+      <h4>Tech Stack</h4>
+      <div class="tags">${p.stack.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+  `;
+
+  // Switch pages
+  document.getElementById('page-home').classList.remove('active');
+  document.getElementById('page-project').classList.add('active');
+  document.getElementById('nav-back').style.display = 'flex';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showHome() {
+  document.getElementById('page-project').classList.remove('active');
+  document.getElementById('page-home').classList.add('active');
+  document.getElementById('nav-back').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
