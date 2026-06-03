@@ -339,8 +339,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('flewi')">
       <div class="card-arrow">→</div>
-      <img src="media/Flewi.png" class="card-banner" alt="Flewi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">📱</div>
       <div class="card-body">
         <h3>📱 Flewi</h3>
         <p>Language learning platform built with React Native, FastAPI, PostgreSQL and Redis. Designed, developed and launched on the Apple App Store.</p>
@@ -355,8 +353,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('transcendence')">
       <div class="card-arrow">→</div>
-      <img src="media/ft_transcendence.png" class="card-banner" alt="ft_transcendence" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">🎮</div>
       <div class="card-body">
         <h3>🎮 ft_transcendence</h3>
         <p>Real-time multiplayer platform featuring authentication, monitoring, observability, APIs and scalable backend services.</p>
@@ -371,8 +367,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('webserv')">
       <div class="card-arrow">→</div>
-      <img src="media/Webserv.png" class="card-banner" alt="Webserv" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">⚙️</div>
       <div class="card-body">
         <h3>⚙️ Webserv</h3>
         <p>Built a non-blocking HTTP server in C++ supporting CGI, uploads, routing, concurrent connections and custom configuration.</p>
@@ -386,8 +380,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('minishell')">
       <div class="card-arrow">→</div>
-      <img src="media/Minishell.png" class="card-banner" alt="Minishell" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">🐚</div>
       <div class="card-body">
         <h3>🐚 Minishell</h3>
         <p>A miniature Unix shell replicating Bash — with lexing, parsing, pipes, redirections, environment handling and built-in commands.</p>
@@ -401,8 +393,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('cub3d')">
       <div class="card-arrow">→</div>
-      <img src="media/Cub3D.png" class="card-banner" alt="Cub3D" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">🎮</div>
       <div class="card-body">
         <h3>🕹️ Cub3D</h3>
         <p>Wolfenstein-inspired raycasting FPS game with enemy AI, minimap, weapon system, textured environments and sliding doors.</p>
@@ -416,8 +406,6 @@ footer a:hover { text-decoration: underline; }
 
     <div class="card" onclick="showProject('philosophers')">
       <div class="card-arrow">→</div>
-      <img src="media/Philosophers.png" class="card-banner" alt="Philosophers" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="card-banner-placeholder" style="display:none">🧠</div>
       <div class="card-body">
         <h3>🧠 Philosophers</h3>
         <p>The classic Dining Philosophers concurrency problem solved with threads and mutexes — no deadlocks, no race conditions, no starvation.</p>
@@ -548,7 +536,7 @@ const projects = {
     emoji: '🎮',
     title: 'ft_transcendence',
     badge: '42 Berlin · Capstone Project',
-    subtitle: 'A real-time multiplayer platform with authentication, live game engine, observability, and scalable microservices.',
+    subtitle: 'A full-stack real-time Pong platform with 3D graphics, tournament brackets, 2FA, i18n in 5 languages, and a production-grade observability stack.',
     banner: 'media/ft_transcendence.png',
     links: [
       { label: 'GitHub Repository →', href: 'https://github.com/ma6di/ft_transcendence' }
@@ -556,26 +544,34 @@ const projects = {
     content: `
       <div class="detail-section">
         <h3>Overview</h3>
-        <p>ft_transcendence is the capstone project of the 42 curriculum — a full-featured real-time web application built from scratch with a focus on security, scalability, and observability. It includes a live Pong game engine, user authentication with 2FA, friend systems, and a chat.</p>
+        <p>ft_transcendence is the 42 curriculum capstone — a full-stack web application built from scratch by a team of 5. It features a real-time 3D Pong game powered by Babylon.js, a complete user management system with 2FA, single-elimination tournament brackets, an AI opponent with adjustable difficulty, and a fully instrumented observability stack (ELK + Prometheus + Grafana). The entire platform runs in Docker Compose and was built with security as a first-class concern.</p>
       </div>
       <div class="detail-section">
         <h3>Key Features</h3>
         <ul>
-          <li>Real-time multiplayer Pong with WebSocket game engine</li>
-          <li>JWT-based authentication + Two-Factor Authentication (2FA)</li>
-          <li>User profiles, friend requests, and match history</li>
-          <li>Live chat system with channels, direct messages, and moderation</li>
-          <li>Full observability stack: monitoring, metrics, alerting</li>
-          <li>Containerised with Docker Compose for reproducible deployment</li>
+          <li>3D Pong game engine with Babylon.js — ball physics, paddle mechanics, sound effects</li>
+          <li>AI opponent with Easy / Medium / Hard difficulty and humanised paddle movement</li>
+          <li>Single-elimination tournament system with visual bracket progression and AI fill</li>
+          <li>JWT authentication + TOTP-based Two-Factor Authentication (Google Authenticator)</li>
+          <li>User profiles with avatar upload, stats dashboard, match history, and friend system</li>
+          <li>Internationalisation in 5 languages: English, French, German, Turkish, Persian (RTL)</li>
+          <li>ELK Stack (Elasticsearch, Logstash, Kibana) for centralised log management</li>
+          <li>Prometheus + Grafana dashboards for metrics, alerting, and system health monitoring</li>
+          <li>HTTPS/TLS, Helmet.js, CORS, bcrypt, input validation, and secure session management</li>
+          <li>Fully containerised with Docker Compose — single-command deployment</li>
         </ul>
       </div>
       <div class="detail-section">
-        <h3>Architecture</h3>
-        <p>The project uses a microservices-inspired layout with separate services for auth, game, chat, and frontend. All services communicate via REST and WebSocket, containerised with Docker Compose. Security hardening was a core requirement throughout.</p>
+        <h3>Architecture & Tech Stack</h3>
+        <p><strong>Frontend:</strong> TypeScript SPA with Vite, Tailwind CSS, and hash-based client-side routing.<br>
+        <strong>Backend:</strong> Node.js 20 with Fastify, SQLite (better-sqlite3), JWT, bcrypt, and Winston structured logging.<br>
+        <strong>Reverse Proxy:</strong> Caddy with self-signed TLS certificates.<br>
+        <strong>Observability:</strong> Prometheus time-series metrics, Grafana dashboards, Alertmanager alerts, and a full ELK logging pipeline.<br>
+        <strong>Infrastructure:</strong> Docker Compose orchestrating 10+ services; environment-driven configuration via <code>.env</code>.</p>
       </div>
     `,
-    stack: ['TypeScript', 'Docker', 'PostgreSQL', 'JWT', 'WebSockets', 'REST APIs'],
-    type: 'Full-Stack · Real-Time',
+    stack: ['TypeScript', 'Node.js', 'Fastify', 'Babylon.js', 'SQLite', 'Docker', 'JWT', 'ELK Stack', 'Prometheus', 'Grafana'],
+    type: 'Full-Stack · Real-Time · DevOps',
     status: '42 Berlin Curriculum'
   },
 
@@ -746,7 +742,7 @@ const projects = {
   }
 };
 
-function showProject(id) {
+function renderProject(id) {
   const p = projects[id];
   if (!p) return;
 
@@ -789,7 +785,6 @@ function showProject(id) {
     </div>
   `;
 
-  // Switch pages
   document.getElementById('page-home').classList.remove('active');
   document.getElementById('page-project').classList.add('active');
   document.getElementById('nav-back').style.display = 'flex';
@@ -797,12 +792,42 @@ function showProject(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function showHome() {
+function renderHome() {
   document.getElementById('page-project').classList.remove('active');
   document.getElementById('page-home').classList.add('active');
   document.getElementById('nav-back').style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function showProject(id) {
+  history.pushState({ project: id }, '', '#' + id);
+  renderProject(id);
+}
+
+function showHome() {
+  history.pushState({ project: null }, '', location.pathname);
+  renderHome();
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', function(e) {
+  if (e.state && e.state.project) {
+    renderProject(e.state.project);
+  } else {
+    renderHome();
+  }
+});
+
+// Handle direct URL with hash on page load
+(function() {
+  const id = location.hash.slice(1);
+  if (id && projects[id]) {
+    history.replaceState({ project: id }, '', location.hash);
+    renderProject(id);
+  } else {
+    history.replaceState({ project: null }, '', location.pathname);
+  }
+})();
 </script>
 
 </body>
