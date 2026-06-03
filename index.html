@@ -204,6 +204,43 @@ section { padding: 42px 0; }
 .skills { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill { padding: 9px 14px; background: white; border: 1px solid var(--border); border-radius: 10px; font-size: .88rem; font-weight: 500; }
 
+/* ── EDUCATION ── */
+.edu-list { display: flex; flex-direction: column; gap: 16px; }
+.edu-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+}
+.edu-logo {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: .78rem;
+  color: var(--text);
+  letter-spacing: -.5px;
+}
+.edu-logo.accent { background: var(--accent-light); color: var(--accent); border-color: #99f6e4; }
+.edu-body { flex: 1; min-width: 0; }
+.edu-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; flex-wrap: wrap; gap: 8px; }
+.edu-school { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+.edu-degree { color: var(--muted); font-size: .92rem; margin-bottom: 8px; }
+.edu-date { font-size: .8rem; color: var(--muted); white-space: nowrap; background: var(--tag-bg); padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
+.edu-desc { color: var(--muted); font-size: .92rem; line-height: 1.65; margin-bottom: 10px; }
+.edu-bullets { padding-left: 18px; margin: 0; }
+.edu-bullets li { color: var(--muted); font-size: .9rem; line-height: 1.65; margin-bottom: 4px; }
+@media(max-width:600px) { .edu-card { flex-direction: column; gap: 14px; } .edu-logo { width: 40px; height: 40px; min-width: 40px; } }
+
 /* ── FOOTER ── */
 footer { padding: 70px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); margin-top: 20px; }
 footer p { margin-bottom: 4px; }
@@ -451,6 +488,88 @@ footer a:hover { text-decoration: underline; }
 <div class="container">
   <h2 class="section-title">Currently Exploring</h2>
   <p class="about">AI agents, LLM-powered applications, scalable backend architectures, mobile product development, and automation systems that reduce manual work.</p>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <h2 class="section-title">Education</h2>
+  <div class="edu-list">
+
+    <div class="edu-card">
+      <div class="edu-logo accent">42</div>
+      <div class="edu-body">
+        <div class="edu-header">
+          <div class="edu-school">42 Berlin</div>
+          <div class="edu-date">Apr 2024 – Jan 2026</div>
+        </div>
+        <div class="edu-degree">Computer Science</div>
+        <p class="edu-desc">Project-based computer science program focused on systems programming, backend development, and software engineering fundamentals.</p>
+        <ul class="edu-bullets">
+          <li>Developed applications in C/C++ with emphasis on memory management and performance</li>
+          <li>Built network services and HTTP servers from scratch</li>
+          <li>Implemented UNIX system-level programs using POSIX APIs</li>
+          <li>Strengthened debugging, code review, and peer-to-peer collaboration skills</li>
+          <li>Applied structured problem-solving in complex technical projects</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-logo">HTW</div>
+      <div class="edu-body">
+        <div class="edu-header">
+          <div class="edu-school">Hochschule für Technik und Wirtschaft Berlin</div>
+          <div class="edu-date">Aug 2022 – Sep 2024</div>
+        </div>
+        <div class="edu-degree">Master of Science – Construction and Real Estate Management</div>
+        <p class="edu-desc">Master's program focused on project management, risk assessment, and digital construction processes.</p>
+        <ul class="edu-bullets">
+          <li>Applied project lifecycle management and structured planning methodologies</li>
+          <li>Developed WBS structures, scheduling plans, and feasibility studies</li>
+          <li>Conducted risk assessments and budget tracking simulations</li>
+          <li>Gained exposure to BIM and digital project coordination tools</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-logo">MUA</div>
+      <div class="edu-body">
+        <div class="edu-header">
+          <div class="edu-school">Metropolia University of Applied Sciences</div>
+          <div class="edu-date">Aug 2022 – Sep 2024</div>
+        </div>
+        <div class="edu-degree">Master's degree – Construction and Real Estate Management</div>
+        <p class="edu-desc">Focused on international project management practices, sustainability, and digital construction methodologies.</p>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-logo">SUT</div>
+      <div class="edu-body">
+        <div class="edu-header">
+          <div class="edu-school">Shahrood University of Technology</div>
+          <div class="edu-date">Sep 2012 – Sep 2014</div>
+        </div>
+        <div class="edu-degree">Master's degree – Water Resources Engineering</div>
+        <p class="edu-desc">Specialized in hydraulic systems modeling, analytical problem solving, and applied engineering mathematics.</p>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-logo">IAU</div>
+      <div class="edu-body">
+        <div class="edu-header">
+          <div class="edu-school">Islamic Azad University</div>
+          <div class="edu-date">Sep 2008 – Aug 2012</div>
+        </div>
+        <div class="edu-degree">Bachelor of Applied Science – Civil Engineering</div>
+        <p class="edu-desc">Engineering foundation in structural analysis, materials science, and quantitative problem solving.</p>
+      </div>
+    </div>
+
+  </div>
 </div>
 </section>
 
