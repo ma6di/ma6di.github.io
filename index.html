@@ -8,11 +8,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ma6di.github.io/">
 <meta property="og:title" content="Mahdi Cheraghali | Software Engineer">
-<meta property="og:description" content="Software engineer in Berlin. Designed, built and shipped two iOS apps solo — Flewi (live on the App Store) and Purrtate.">
+<meta property="og:description" content="Software engineer in Berlin, open to software engineering roles. Built two iOS apps solo — Flewi is live on the App Store.">
 <meta property="og:image" content="https://ma6di.github.io/media/Flewi.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mahdi Cheraghali | Software Engineer">
-<meta name="twitter:description" content="Software engineer in Berlin. Designed, built and shipped two iOS apps solo — Flewi (live on the App Store) and Purrtate.">
+<meta name="twitter:description" content="Software engineer in Berlin, open to software engineering roles. Built two iOS apps solo — Flewi is live on the App Store.">
 <meta name="twitter:image" content="https://ma6di.github.io/media/Flewi.png">
 <link rel="icon" type="image/png" href="media/icon-ios.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,9 +54,6 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* scroll progress */
-#progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 200;
-  background: linear-gradient(90deg, var(--accent), var(--flewi), var(--purr-deep)); }
 
 /* ── PAGE TRANSITIONS ── */
 .page { display: none; animation: fadeIn .45s cubic-bezier(.2,.7,.2,1); }
@@ -64,7 +61,7 @@ body::before {
 @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
 /* reveal on scroll */
-.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.js .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
 .js .reveal.in { opacity: 1; transform: none; }
 
 /* ── NAV ── */
@@ -77,7 +74,7 @@ nav {
   padding: 14px 0;
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; cursor: pointer; letter-spacing: -0.5px; user-select: none; }
+.nav-logo { color: inherit; text-decoration: none; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; cursor: pointer; letter-spacing: -0.5px; user-select: none; }
 .nav-logo span { color: var(--accent); display: inline-block; transition: transform .4s; }
 .nav-logo:hover span { transform: translateY(-4px) scale(1.4); }
 .nav-links { display: flex; gap: 22px; font-size: .88rem; font-weight: 500; }
@@ -85,7 +82,7 @@ nav {
 .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -3px; height: 2px; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform .3s; }
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-.nav-back { display: none; align-items: center; gap: 8px; font-size: .9rem; font-weight: 500; cursor: pointer; color: var(--muted); transition: color .2s; }
+.nav-back { text-decoration: none; display: none; align-items: center; gap: 8px; font-size: .9rem; font-weight: 500; cursor: pointer; color: var(--muted); transition: color .2s; }
 .nav-back:hover { color: var(--accent); }
 .nav-back svg { width: 16px; height: 16px; transition: transform .2s; }
 .nav-back:hover svg { transform: translateX(-4px); }
@@ -94,7 +91,7 @@ nav {
 /* ── HERO ── */
 header { padding: 80px 0 40px; position: relative; overflow-x: clip; }
 .blobs { position: absolute; inset: -40px 0 0 0; overflow: hidden; pointer-events: none; z-index: 0; }
-.blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
+.blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; }
 .blob.b1 { width: 420px; height: 420px; background: var(--accent-light); top: -60px; left: -80px; }
 .blob.b2 { width: 360px; height: 360px; background: #fdf0a6; top: 40px; right: 5%; animation-delay: -6s; animation-duration: 22s; }
 .blob.b3 { width: 300px; height: 300px; background: #f6d5c8; bottom: -80px; left: 40%; animation-delay: -12s; }
@@ -115,11 +112,8 @@ header { padding: 80px 0 40px; position: relative; overflow-x: clip; }
 @keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
 h1 { font-size: 3.2rem; line-height: 1.06; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
 h1 em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 800; letter-spacing: -1.5px; color: var(--accent); }
-.rot-wrap { display: inline-grid; vertical-align: top; }
-.rot-wrap > span { grid-area: 1 / 1; white-space: nowrap; }
-.rot-ghost { visibility: hidden; padding-right: 10px; }
-.caret { display: inline-block; width: 3px; height: .9em; background: var(--accent); margin-left: 4px; vertical-align: -0.08em; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.availability { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 18px; font-size: .9rem; color: var(--muted); }
+.availability strong { color: var(--text); font-weight: 500; }
 .subtitle { max-width: 590px; color: var(--muted); font-size: 1.06rem; margin-bottom: 28px; }
 .subtitle strong { color: var(--text); font-weight: 500; }
 .buttons { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -137,7 +131,7 @@ h1 em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 800; le
 
 /* avatar + orbit */
 .orbit-wrap { position: relative; width: 300px; height: 300px; display: grid; place-items: center; }
-.avatar { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 20px 50px rgba(0,0,0,.12); position: relative; z-index: 2; animation: bob 6s ease-in-out infinite; }
+.avatar { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid white; box-shadow: 0 20px 50px rgba(0,0,0,.12); position: relative; z-index: 2; }
 @keyframes bob { 50% { transform: translateY(-8px); } }
 .ring { position: absolute; inset: 8px; border-radius: 50%; border: 1.5px dashed #c9c6be; animation: spin 40s linear infinite; }
 .orbit { position: absolute; inset: 8px; animation: spin 16s linear infinite; z-index: 3; }
@@ -146,26 +140,18 @@ h1 em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 800; le
 .orbit.o2 .sat { animation-delay: -8s; }
 .orbit .sat img { width: 100%; height: 100%; display: block; }
 .orbit-wrap:hover .orbit, .orbit-wrap:hover .orbit .sat { animation-play-state: paused; }
-.chip-float { position: absolute; z-index: 4; background: white; border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: .75rem; font-weight: 500; box-shadow: 0 8px 20px rgba(0,0,0,.08); white-space: nowrap; animation: bob 5s ease-in-out infinite; }
+.chip-float { position: absolute; z-index: 4; background: white; border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: .75rem; font-weight: 500; box-shadow: 0 8px 20px rgba(0,0,0,.08); white-space: nowrap; }
 .chip-float.c1 { bottom: 20px; left: -24px; animation-delay: -1s; }
 .chip-float.c2 { top: 36px; right: -30px; animation-delay: -3s; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── STATS ── */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 54px; position: relative; z-index: 1; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 54px; position: relative; z-index: 1; }
 .stat { background: rgba(255,255,255,.75); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; backdrop-filter: blur(6px); }
 .stat-n { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; letter-spacing: -1px; line-height: 1.1; }
 .stat-l { color: var(--muted); font-size: .84rem; line-height: 1.4; margin-top: 4px; }
-@media(max-width: 800px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 700px) { .stats { grid-template-columns: 1fr; } }
 
-/* ── MARQUEE ── */
-.marquee { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 0; margin: 30px 0 10px; background: white;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.marquee-track { display: flex; gap: 40px; width: max-content; animation: marquee 38s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-track span { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
-.marquee-track span::after { content: '✦'; color: var(--accent); font-size: .8rem; }
-@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ── SECTIONS ── */
 section { padding: 46px 0; }
@@ -187,7 +173,7 @@ section { padding: 46px 0; }
   background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.35), transparent 40%);
 }
 .feature:hover::after { opacity: 1; }
-.feature-text { padding: 44px 44px 40px; display: flex; flex-direction: column; position: relative; z-index: 2; }
+.feature-text { padding: 44px 44px 40px; display: flex; flex-direction: column; }
 .feature-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
 .feature-icon { width: 58px; height: 58px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,.15); transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
 .feature:hover .feature-icon { transform: rotate(-8deg) scale(1.08); }
@@ -224,7 +210,8 @@ section { padding: 46px 0; }
 .flewi .phones::before { content: ''; position: absolute; width: 380px; height: 380px; border-radius: 50%; background: var(--flewi); left: 50%; top: 50%; margin: -190px 0 0 -190px; border: 2px solid #141414; }
 .flewi .tag { background: white; border: 1.5px solid #141414; }
 .flashcard { position: absolute; z-index: 6; right: 22px; bottom: 34px; width: 150px; height: 92px; perspective: 700px; }
-.flashcard-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: flip 6s cubic-bezier(.6,.0,.3,1) infinite; }
+.flashcard-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: flip 6s cubic-bezier(.6,.0,.3,1) infinite; animation-play-state: paused; }
+.feature:hover .flashcard-inner, .feature:focus-within .flashcard-inner { animation-play-state: running; }
 .flashcard-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border: 2px solid #141414; border-radius: 12px; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; box-shadow: 4px 4px 0 #141414; }
 .flashcard-face small { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: .62rem; color: var(--muted); letter-spacing: .5px; }
 .flashcard-face.back { transform: rotateY(180deg); background: var(--flewi); }
@@ -247,7 +234,8 @@ section { padding: 46px 0; }
 .basket.out { background: var(--purr-deep); color: white; transform: translateY(-4px); }
 .basket.out .bi { filter: none; animation: wiggle .6s ease; }
 @keyframes wiggle { 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
-.yarn { position: absolute; z-index: 6; top: 30px; right: 30px; font-size: 2rem; animation: roll 7s ease-in-out infinite; }
+.yarn { position: absolute; z-index: 6; top: 30px; right: 30px; font-size: 2rem; animation: roll 7s ease-in-out infinite; animation-play-state: paused; }
+.feature:hover .yarn { animation-play-state: running; }
 @keyframes roll { 0%,100% { transform: translateX(0) rotate(0); } 50% { transform: translateX(-60px) rotate(-360deg); } }
 
 @media(max-width: 900px) {
@@ -263,6 +251,13 @@ section { padding: 46px 0; }
   .flashcard { right: 10px; }
 }
 
+.stretch { color: inherit; text-decoration: none; }
+.stretch::after { content: ''; position: absolute; inset: 0; z-index: 7; border-radius: 18px; }
+.feature .stretch::after { border-radius: 28px; }
+.stretch:focus { outline: none; }
+.stretch:focus-visible::after { outline: 3px solid var(--accent); outline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
 /* ── PROJECT GRID ── */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
 .card {
@@ -270,7 +265,7 @@ section { padding: 46px 0; }
   transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .35s; position: relative;
   transform-style: preserve-3d;
 }
-.card:hover { border-color: var(--accent); box-shadow: 0 18px 40px rgba(15,118,110,.12); }
+.card:hover { border-color: var(--accent); box-shadow: 0 18px 40px rgba(15,118,110,.12); transform: translateY(-4px); }
 .card-banner-wrap { overflow: hidden; height: 160px; }
 .card-banner { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--tag-bg); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .card:hover .card-banner { transform: scale(1.07); }
@@ -349,14 +344,6 @@ footer { padding: 60px 0 90px; text-align: center; color: var(--muted); position
 footer p { margin-bottom: 4px; }
 footer a { color: var(--accent); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
-.chase { position: absolute; bottom: 18px; left: 0; width: 100%; height: 40px; pointer-events: none; }
-.chase span { position: absolute; bottom: 0; font-size: 1.6rem; animation: run 16s linear infinite; }
-.chase .ball { animation-delay: -.0s; }
-.chase .cat { animation-delay: -1.1s; }
-.chase .ball i { display: inline-block; font-style: normal; animation: spin 1s linear infinite; }
-.chase .cat i { display: inline-block; font-style: normal; transform: scaleX(-1); animation: hop .4s ease-in-out infinite alternate; }
-@keyframes run { from { left: -60px; } to { left: calc(100% + 60px); } }
-@keyframes hop { to { transform: scaleX(-1) translateY(-5px); } }
 
 /* ═══════════════ PROJECT DETAIL PAGE ═══════════════ */
 #page-project { padding-bottom: 80px; }
@@ -374,8 +361,19 @@ footer a:hover { text-decoration: underline; }
 .hl b { display: block; font-family: 'Syne', sans-serif; font-size: 1.5rem; letter-spacing: -.5px; line-height: 1.2; }
 .hl span { color: var(--muted); font-size: .8rem; line-height: 1.35; display: block; }
 .gallery { display: flex; gap: 18px; overflow-x: auto; padding: 10px 4px 26px; margin-bottom: 26px; scroll-snap-type: x mandatory; }
-.gallery .phone { position: relative; flex: 0 0 200px; scroll-snap-align: start; transition: transform .3s; box-shadow: 0 14px 20px -12px rgba(0,0,0,.35); }
-.gallery .phone:hover { transform: translateY(-8px) rotate(-1.5deg); }
+.shot { flex: 0 0 200px; scroll-snap-align: start; margin: 0; }
+.gallery .phone { position: relative; width: 200px; box-shadow: 0 14px 20px -12px rgba(0,0,0,.35); }
+.shot figcaption { font-size: .82rem; color: var(--muted); line-height: 1.4; margin-top: 10px; padding: 0 4px; }
+.shot figcaption b { color: var(--text); font-weight: 500; display: block; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.fact { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
+.fact h5 { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; font-weight: 500; }
+.fact p { font-size: .9rem; line-height: 1.5; color: var(--text); }
+.decision { background: white; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 14px; padding: 18px 20px; margin-bottom: 14px; }
+.decision h4 { font-family: 'Syne', sans-serif; font-size: 1rem; margin-bottom: 8px; }
+.decision p { font-size: .93rem; margin-bottom: 6px; }
+.decision p:last-child { margin-bottom: 0; }
+.decision b { color: var(--text); font-weight: 600; }
 .gallery::-webkit-scrollbar { height: 6px; }
 .gallery::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
 .detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
@@ -418,21 +416,20 @@ footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<div id="progress"></div>
 
 <nav>
   <div class="container nav-inner">
-    <div class="nav-logo" onclick="showHome()">mc<span>.</span></div>
+    <a class="nav-logo" href="./" data-home aria-label="Mahdi Cheraghali — home">mc<span>.</span></a>
     <div class="nav-links" id="nav-links">
       <a href="#apps" onclick="return jump('apps')">Apps</a>
       <a href="#projects" onclick="return jump('projects')">Projects</a>
       <a href="#experience" onclick="return jump('experience')">Experience</a>
       <a href="#contact" onclick="return jump('contact')">Contact</a>
     </div>
-    <div class="nav-back" id="nav-back" onclick="showHome()">
+    <a class="nav-back" id="nav-back" href="./" data-home>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back to projects
-    </div>
+    </a>
   </div>
 </nav>
 
@@ -444,43 +441,36 @@ footer a:hover { text-decoration: underline; }
 <div class="container">
 <div class="hero">
   <div>
-    <div class="badge"><span class="dot"></span> 2 iOS apps built solo · Flewi live on the App Store</div>
-    <h1>I design, build<br class="d-br"> &amp; ship apps for<br class="d-br"> <em class="rot-wrap"><span class="rot-ghost" aria-hidden="true">language learners.</span><span class="rot-ghost" aria-hidden="true">everyday problems.</span><span><span id="rotator">real people.</span><span class="caret"></span></span></em></h1>
-    <p class="subtitle">I'm Mahdi, a software engineer in Berlin and <strong>42 Berlin</strong> graduate. I take products from idea to the App Store on my own — <strong>UX, mobile, backend, testing, release and automation</strong> — and before code, I spent five years supervising construction sites.</p>
+    <div class="badge"><span class="dot"></span> Based in Berlin · Open to software engineering roles</div>
+    <h1>I design, build<br class="d-br"> &amp; ship apps for<br class="d-br"> <em>real people.</em></h1>
+    <p class="subtitle">I'm Mahdi, a software engineer trained at <strong>42 Berlin</strong>. I build products end to end — <strong>UX, mobile, backend, testing and release automation</strong>. My app Flewi is live on the App Store.</p>
     <div class="buttons">
       <a href="#apps" onclick="return jump('apps')" class="btn btn-primary">See my apps ↓</a>
-      <a href="https://github.com/ma6di" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+      <a href="mailto:mahdi.cheraghali@gmail.com" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email me
+      </a>
       <a href="https://www.linkedin.com/in/mahdi-cheraghali" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+      <a href="https://github.com/ma6di" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
     </div>
   </div>
-  <div class="orbit-wrap">
+  <div class="orbit-wrap" aria-hidden="true">
     <div class="ring"></div>
-    <img src="https://github.com/ma6di.png" class="avatar" alt="Mahdi Cheraghali">
-    <div class="orbit"><div class="sat" title="Flewi"><img src="media/icon-ios.png" alt="Flewi"></div></div>
-    <div class="orbit o2"><div class="sat" title="Purrtate"><img src="media/purrtate/icon.png" alt="Purrtate"></div></div>
+    <img src="https://github.com/ma6di.png" class="avatar" alt="">
+    <div class="orbit"><div class="sat"><img src="media/icon-ios.png" alt=""></div></div>
+    <div class="orbit o2"><div class="sat"><img src="media/purrtate/icon.png" alt=""></div></div>
     <div class="chip-float c1">📍 Berlin</div>
     <div class="chip-float c2">🇬🇧 C1 · 🇩🇪 B1</div>
   </div>
 </div>
 
 <div class="stats">
-  <div class="stat reveal"><div class="stat-n" data-count="2">0</div><div class="stat-l">iOS apps designed, built &amp; released solo</div></div>
-  <div class="stat reveal" style="--d:.08s"><div class="stat-n" data-count="1600" data-suffix="+">0</div><div class="stat-l">commits on Flewi in 13 months</div></div>
-  <div class="stat reveal" style="--d:.16s"><div class="stat-n" data-count="570" data-suffix="+">0</div><div class="stat-l">automated tests across both apps</div></div>
-  <div class="stat reveal" style="--d:.24s"><div class="stat-n" data-count="5" data-suffix=" yrs">0</div><div class="stat-l">on-site engineering before software</div></div>
+  <div class="stat"><div class="stat-n">2 apps</div><div class="stat-l">built independently · 1 live on the App Store</div></div>
+  <div class="stat"><div class="stat-n">570+</div><div class="stat-l">automated tests across both apps</div></div>
+  <div class="stat"><div class="stat-n">5 yrs</div><div class="stat-l">on-site engineering before software</div></div>
 </div>
 </div>
 </header>
-
-<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
-
-<section id="about-sec">
-<div class="container reveal">
-  <div class="eyebrow">// about</div>
-  <h2 class="section-title">From building sites to building apps</h2>
-  <p class="about">I studied <strong>civil engineering</strong> and <strong>construction &amp; real estate management</strong>, then spent 2017–2022 supervising construction projects — checking work against plans, reviewing invoices and documenting progress. That taught me to work carefully, document everything and keep the people paying for the work in mind. At <strong>42 Berlin</strong> I moved into software and now ship complete products: I plan the UX, write the code, test it, automate the build and release, and write the docs and legal pages. I like turning a messy manual routine into something simple, automated and reliable.</p>
-</div>
-</section>
 
 <section id="apps">
 <div class="container">
@@ -490,12 +480,12 @@ footer a:hover { text-decoration: underline; }
   </div>
 
   <!-- FLEWI -->
-  <div class="feature flewi reveal" onclick="showProject('flewi')" data-spot>
+  <div class="feature flewi reveal" data-spot>
     <div class="feature-text">
       <div class="feature-head">
         <img class="feature-icon" src="media/icon-ios.png" alt="Flewi icon">
         <div>
-          <h3>Flewi</h3>
+          <h3><a class="stretch" href="#flewi" data-project="flewi">Flewi</a></h3>
           <div class="status"><span class="dot"></span> Live on the App Store · web · Android</div>
         </div>
       </div>
@@ -508,7 +498,7 @@ footer a:hover { text-decoration: underline; }
       <div class="tech">
         <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span>
       </div>
-      <div class="feature-cta">Case study <i>→</i></div>
+      <div class="feature-cta" aria-hidden="true">Read the case study <i>→</i></div>
     </div>
     <div class="phones">
       <div class="phone p2"><img src="media/flewi/IMG_1483.jpg" alt="Flewi Spaces" loading="lazy"></div>
@@ -524,13 +514,13 @@ footer a:hover { text-decoration: underline; }
   </div>
 
   <!-- PURRTATE -->
-  <div class="feature purr reveal" onclick="showProject('purrtate')" data-spot>
+  <div class="feature purr reveal" data-spot>
     <div class="feature-text">
       <div class="feature-head">
         <img class="feature-icon" src="media/purrtate/icon.png" alt="Purrtate icon">
         <div>
-          <h3>Purrtate</h3>
-          <div class="status"><span class="dot amber"></span> Built &amp; shipped to App Review</div>
+          <h3><a class="stretch" href="#purrtate" data-project="purrtate">Purrtate</a></h3>
+          <div class="status"><span class="dot amber"></span> Built solo · in App Review</div>
         </div>
       </div>
       <p class="feature-tagline">Toys that feel <mark>new again.</mark></p>
@@ -542,7 +532,7 @@ footer a:hover { text-decoration: underline; }
       <div class="tech">
         <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">TypeScript</span><span class="tag">Zustand</span><span class="tag">Jest</span><span class="tag">EAS</span>
       </div>
-      <div class="feature-cta">Case study <i>→</i></div>
+      <div class="feature-cta" aria-hidden="true">Read the case study <i>→</i></div>
     </div>
     <div class="phones">
       <div class="phone p2"><img src="media/purrtate/02-baskets.jpg" alt="Purrtate baskets" loading="lazy"></div>
@@ -559,6 +549,14 @@ footer a:hover { text-decoration: underline; }
 </div>
 </section>
 
+<section id="about-sec">
+<div class="container reveal">
+  <div class="eyebrow">// about</div>
+  <h2 class="section-title">From building sites to building apps</h2>
+  <p class="about">Before software I spent five years supervising construction sites — checking work against plans, reviewing invoices and documenting everything. At <strong>42 Berlin</strong> I moved into software. I still work the same way: understand who it's for, build it carefully, and automate the repetitive parts.</p>
+</div>
+</section>
+
 <section id="projects">
 <div class="container">
   <div class="reveal">
@@ -567,51 +565,51 @@ footer a:hover { text-decoration: underline; }
   </div>
   <div class="grid" id="project-grid">
 
-    <div class="card reveal" onclick="showProject('transcendence')" data-tilt>
-      <div class="card-arrow">→</div>
+    <div class="card reveal">
+      <div class="card-arrow" aria-hidden="true">→</div>
       <div class="card-banner-wrap"><img class="card-banner" src="media/ft_transcendence.png" alt="ft_transcendence" style="background:#000" loading="lazy"></div>
       <div class="card-body">
-        <h3>🎮 ft_transcendence</h3>
+        <h3><a class="stretch" href="#transcendence" data-project="transcendence">🎮 ft_transcendence</a></h3>
         <p>Team-built real-time 3D Pong platform with 2FA, tournaments, AI opponent, i18n and a full monitoring stack.</p>
         <div class="tech"><span class="tag">TypeScript</span><span class="tag">Docker</span><span class="tag">Prometheus</span><span class="tag">JWT</span></div>
       </div>
     </div>
 
-    <div class="card reveal" style="--d:.08s" onclick="showProject('webserv')" data-tilt>
-      <div class="card-arrow">→</div>
+    <div class="card reveal">
+      <div class="card-arrow" aria-hidden="true">→</div>
       <div class="card-banner-wrap"><img class="card-banner" src="media/Webserv.png" alt="Webserv" style="background:#0a0f1e" loading="lazy"></div>
       <div class="card-body">
-        <h3>⚙️ Webserv</h3>
+        <h3><a class="stretch" href="#webserv" data-project="webserv">⚙️ Webserv</a></h3>
         <p>Non-blocking HTTP server in C++ supporting CGI, uploads, routing, concurrent connections and custom configuration.</p>
         <div class="tech"><span class="tag">C++</span><span class="tag">Linux</span><span class="tag">HTTP</span></div>
       </div>
     </div>
 
-    <div class="card reveal" style="--d:.16s" onclick="showProject('minishell')" data-tilt>
-      <div class="card-arrow">→</div>
+    <div class="card reveal">
+      <div class="card-arrow" aria-hidden="true">→</div>
       <div class="card-banner-wrap"><img class="card-banner" src="media/Minishell.png" alt="Minishell" style="background:#0d1117" loading="lazy"></div>
       <div class="card-body">
-        <h3>🐚 Minishell</h3>
+        <h3><a class="stretch" href="#minishell" data-project="minishell">🐚 Minishell</a></h3>
         <p>A Bash-like Unix shell with lexing, parsing, pipes, redirections, environment handling and built-ins.</p>
         <div class="tech"><span class="tag">C</span><span class="tag">Unix</span><span class="tag">AST</span></div>
       </div>
     </div>
 
-    <div class="card reveal" onclick="showProject('cub3d')" data-tilt>
-      <div class="card-arrow">→</div>
+    <div class="card reveal">
+      <div class="card-arrow" aria-hidden="true">→</div>
       <div class="card-banner-wrap"><img class="card-banner" src="media/Cub3D.png" alt="Cub3D" style="background:#f97316" loading="lazy"></div>
       <div class="card-body">
-        <h3>🕹️ Cub3D</h3>
+        <h3><a class="stretch" href="#cub3d" data-project="cub3d">🕹️ Cub3D</a></h3>
         <p>Raycasting FPS with enemy AI, minimap, weapons, textured environments and sliding doors.</p>
         <div class="tech"><span class="tag">C</span><span class="tag">Raycasting</span><span class="tag">Graphics</span></div>
       </div>
     </div>
 
-    <div class="card reveal" style="--d:.08s" onclick="showProject('philosophers')" data-tilt>
-      <div class="card-arrow">→</div>
+    <div class="card reveal">
+      <div class="card-arrow" aria-hidden="true">→</div>
       <div class="card-banner-wrap"><img class="card-banner" src="media/Philosophers.png" alt="Philosophers" style="background:#f5f3ee" loading="lazy"></div>
       <div class="card-body">
-        <h3>🧠 Philosophers</h3>
+        <h3><a class="stretch" href="#philosophers" data-project="philosophers">🧠 Philosophers</a></h3>
         <p>Dining Philosophers solved with threads and mutexes — no deadlocks, no race conditions, no starvation.</p>
         <div class="tech"><span class="tag">C</span><span class="tag">Threads</span><span class="tag">Mutexes</span></div>
       </div>
@@ -631,13 +629,13 @@ footer a:hover { text-decoration: underline; }
     <div class="skill-group reveal"><h4>📱 Mobile &amp; Frontend</h4><div class="skills">
       <span class="skill">React Native</span><span class="skill">Expo</span><span class="skill">TypeScript</span><span class="skill">React</span><span class="skill">Zustand</span><span class="skill">Tailwind CSS</span><span class="skill">PWA</span><span class="skill">UI / UX design</span>
     </div></div>
-    <div class="skill-group reveal" style="--d:.08s"><h4>🛠 Backend &amp; Data</h4><div class="skills">
+    <div class="skill-group reveal"><h4>🛠 Backend &amp; Data</h4><div class="skills">
       <span class="skill">Python</span><span class="skill">FastAPI</span><span class="skill">SQLAlchemy</span><span class="skill">Alembic</span><span class="skill">PostgreSQL</span><span class="skill">Redis</span><span class="skill">REST APIs</span><span class="skill">Node.js</span><span class="skill">C / C++</span>
     </div></div>
-    <div class="skill-group reveal" style="--d:.16s"><h4>🚀 Ship &amp; Automate</h4><div class="skills">
+    <div class="skill-group reveal"><h4>🚀 Ship &amp; Automate</h4><div class="skills">
       <span class="skill">Docker</span><span class="skill">Caddy</span><span class="skill">EAS Build</span><span class="skill">App Store Connect</span><span class="skill">Jest</span><span class="skill">pytest</span><span class="skill">Sentry</span><span class="skill">Git</span><span class="skill">Linux</span>
     </div></div>
-    <div class="skill-group reveal" style="--d:.24s"><h4>🤖 AI &amp; Workflow</h4><div class="skills">
+    <div class="skill-group reveal"><h4>🤖 AI &amp; Workflow</h4><div class="skills">
       <span class="skill">AI-assisted coding</span><span class="skill">LLM APIs</span><span class="skill">Google Cloud TTS</span><span class="skill">Python scripting</span><span class="skill">Content pipelines</span>
     </div></div>
   </div>
@@ -676,8 +674,8 @@ footer a:hover { text-decoration: underline; }
   <p class="about reveal" style="margin-top:6px">Full construction résumé: <a class="link-inline" href="https://www.mahdicheraghali.com/" target="_blank" rel="noopener">mahdicheraghali.com ↗</a></p>
   <div class="langs">
     <div class="lang reveal"><b>English</b>C1<span class="bar"><i style="--w:85%"></i></span></div>
-    <div class="lang reveal" style="--d:.08s"><b>German</b>B1<span class="bar"><i style="--w:55%"></i></span></div>
-    <div class="lang reveal" style="--d:.16s"><b>Persian</b>Native<span class="bar"><i style="--w:100%"></i></span></div>
+    <div class="lang reveal"><b>German</b>B1<span class="bar"><i style="--w:55%"></i></span></div>
+    <div class="lang reveal"><b>Persian</b>Native<span class="bar"><i style="--w:100%"></i></span></div>
   </div>
 </div>
 </section>
@@ -718,7 +716,7 @@ footer a:hover { text-decoration: underline; }
           <div class="edu-degree">M.Sc. Water Resources Engineering</div>
         </div>
       </div>
-      <div class="edu-card reveal" style="--d:.08s">
+      <div class="edu-card reveal">
         <div class="edu-logo"><img src="media/iau.jpeg" alt="Islamic Azad University"></div>
         <div class="edu-body">
           <div class="edu-header"><div class="edu-school">Islamic Azad University</div><div class="edu-date">2008 – 2012</div></div>
@@ -753,7 +751,6 @@ footer a:hover { text-decoration: underline; }
 <footer>
   <p><strong>Mahdi Cheraghali</strong></p>
   <p>Berlin, Germany · <a href="mailto:mahdi.cheraghali@gmail.com">mahdi.cheraghali@gmail.com</a></p>
-  <div class="chase" aria-hidden="true"><span class="ball"><i>🧶</i></span><span class="cat"><i>🐈</i></span></div>
 </footer>
 
 </div><!-- end #page-home -->
@@ -775,6 +772,7 @@ footer a:hover { text-decoration: underline; }
       </div>
       <div class="project-links" id="proj-links"></div>
     </div>
+    <div id="proj-facts"></div>
     <div id="proj-highlights"></div>
     <div id="proj-gallery"></div>
     <div class="divider"></div>
@@ -794,7 +792,7 @@ const projects = {
     emojiIsHtml: true,
     title: 'Flewi',
     badge: '🚀 Live on the App Store · flewi.app',
-    subtitle: 'A full-stack flashcard platform with spaced repetition for any language and any subject — designed, built, hosted and marketed by me, from idea to App Store.',
+    subtitle: 'A spaced-repetition flashcard app for any language and any subject. I built all of it on my own, from the first idea to the App Store.',
     banner: 'media/Flewi.png',
     bannerStyle: 'object-fit:contain;background:#f5f3ee',
     links: [
@@ -802,46 +800,59 @@ const projects = {
       { label: 'Try it on the web →', href: 'https://flewi.app' },
       { label: 'GitHub (public repo) →', href: 'https://github.com/ma6di/Flewi-public' }
     ],
-    highlights: [
-      { n: '1,600+', l: 'commits since Oct 2025' },
-      { n: '500+', l: 'backend tests (pytest)' },
-      { n: '60', l: 'Alembic database migrations' },
-      { n: '10 / 28', l: 'languages for lookup / audio' }
+    facts: [
+      ['Problem', 'Making good flashcards by hand is slow, and noun genders (der/die/das, le/la, el/la) are one of the hardest parts of a new language.'],
+      ['Who it helps', 'Language learners first, and anyone who studies a subject with flashcards.'],
+      ['My role', 'Everything: product design, iOS app, web app, API, database, hosting, release and marketing.'],
+      ['Status', 'Live on the App Store and the web since August 2026. Android as a direct download.']
     ],
-    gallery: ['media/flewi/IMG_1489.jpg', 'media/flewi/IMG_1483.jpg', 'media/flewi/IMG_0994.jpg', 'media/flewi/IMG_1486.jpg', 'media/flewi/IMG_0839.jpg', 'media/flewi/IMG_0819.jpg'],
+    highlights: [
+      { n: 'Live', l: 'iOS, web and Android' },
+      { n: '500+', l: 'backend tests (pytest)' },
+      { n: '10 / 28', l: 'languages for word lookup / audio' }
+    ],
+    gallery: [
+      { src: 'media/flewi/IMG_1489.jpg', t: "Today's plan", c: 'Due reviews come first, then new cards.' },
+      { src: 'media/flewi/IMG_1486.jpg', t: 'Smart Add', c: 'Type a word, get a full card.' },
+      { src: 'media/flewi/IMG_0994.jpg', t: 'Review', c: 'Rate each card Forgot, Hard or Easy.' },
+      { src: 'media/flewi/IMG_0839.jpg', t: 'Article Test stats', c: 'Shows which article you keep confusing.' },
+      { src: 'media/flewi/IMG_1483.jpg', t: 'Spaces', c: 'One per language or subject.' },
+      { src: 'media/flewi/IMG_0819.jpg', t: 'Stats', c: 'Weekly progress and retention.' }
+    ],
     content: `
       <div class="detail-section">
-        <h3>Overview</h3>
-        <p>Flewi is a flashcard app with spaced repetition. Users organise cards into <strong>Spaces</strong> (one per language or subject), each with its own decks, streak, stats and daily goal. I built it alone: product design, the iOS app, the web app, the API, the database, hosting, monitoring, App Store release and the marketing. It went live on iOS and the web in August 2026; Android ships as a direct APK download.</p>
+        <h3>Key decisions</h3>
+        <div class="decision">
+          <h4>1 · Changing the database without breaking older app versions</h4>
+          <p><b>Problem:</b> Some backend changes, such as giving each user their own copy of shared words, would break people still on an older app version and touch real user data.</p>
+          <p><b>Decision:</b> I first shipped a minimum-version check (a config endpoint plus an "update required" screen), before any breaking change. Then I rehearsed each migration on a second server against a copy of the production data before moving traffic over.</p>
+          <p><b>Result:</b> Risky migrations are tested on real data first. Outdated installs ask the user to update instead of failing.</p>
+        </div>
+        <div class="decision">
+          <h4>2 · Generating each pronunciation once</h4>
+          <p><b>Problem:</b> Every new card needs audio. Calling a text-to-speech service for every card is slow and costs money each time.</p>
+          <p><b>Decision:</b> Use a human recording from Wikimedia Commons when one exists, otherwise Google Cloud Text-to-Speech. Each clip is stored under a hash of language, voice and text, so the same word is shared by all users. If the file can't be reached, the phone's own speech engine reads the word.</p>
+          <p><b>Result:</b> Each word in each language is generated at most once, and audio never fails silently.</p>
+        </div>
+        <div class="decision">
+          <h4>3 · Planning for failure on a one-person team</h4>
+          <p><b>Problem:</b> I run production myself on one server, with no one else on call.</p>
+          <p><b>Decision:</b> Docker Compose and Caddy (automatic TLS) for repeatable deploys, Sentry for errors, automated backups, and a written disaster-recovery and cut-over runbook.</p>
+          <p><b>Result:</b> Errors are reported automatically, and there is a step-by-step plan to restore or move the service.</p>
+        </div>
       </div>
       <div class="detail-section">
-        <h3>What I built</h3>
+        <h3>What's in the app</h3>
         <ul>
-          <li><strong>Spaced-repetition engine</strong> in FastAPI — learning steps (10 min → 60 min → 1 day), an ease factor clamped between 1.3 and 3.0, and leech detection after 5 lapses. The daily goal limits new cards only and never hides due reviews.</li>
-          <li><strong>Smart Add</strong> — type a word and get a full card (definition, article/gender, conjugation, examples, IPA) from dictionary lookup in 10 languages, with ranking for words that have several meanings.</li>
-          <li><strong>Pronunciation pipeline</strong> — uses a human recording from Wikimedia Commons when one exists, otherwise Google Cloud Text-to-Speech (28 languages). Each clip is stored by a sha256 hash so a word is generated once and shared; the phone's own speech engine is the fallback.</li>
-          <li><strong>Article Test</strong> — a separate review queue for der/die/das, le/la, el/la and so on that shows <em>which</em> article a learner keeps confusing, not just a score.</li>
-          <li><strong>Card builder</strong> with 17 field types, CSV bulk import, and community collection decks (CEFR A1–B2).</li>
-          <li><strong>Analytics</strong> — retention, learning health, momentum trends, streaks and streak freezes.</li>
-          <li><strong>React Native (Expo) iOS app</strong> with Sign in with Apple and Google, App Store in-app subscriptions and local notifications; a <strong>React + Vite PWA</strong> on the web.</li>
+          <li><strong>Spaced repetition</strong> with learning steps, an adjustable ease factor and detection of cards you keep forgetting. The daily goal limits new cards only and never hides due reviews.</li>
+          <li><strong>Smart Add:</strong> dictionary lookup in 10 languages that fills in the definition, article, conjugation, examples and IPA.</li>
+          <li><strong>Article Test:</strong> a separate review queue for noun genders that shows which article you keep picking instead.</li>
+          <li><strong>Card builder</strong> with 17 field types, CSV import and shared CEFR decks (A1–B2).</li>
+          <li><strong>iOS app</strong> (React Native/Expo) with Sign in with Apple and Google, in-app subscriptions and reminders, plus a React web app that installs like an app (PWA).</li>
         </ul>
-      </div>
-      <div class="detail-section">
-        <h3>Infrastructure &amp; quality</h3>
-        <ul>
-          <li>PostgreSQL with SQLAlchemy and Alembic migrations; Redis for caching and session state</li>
-          <li>Self-hosted on a Hetzner server with Docker Compose and Caddy (automatic TLS)</li>
-          <li>Sentry error monitoring, automated backups and a written disaster-recovery runbook</li>
-          <li>Versioned rollout process so older app installs keep working after backend and schema changes</li>
-          <li>500+ backend tests, mobile unit tests, and a security and input-validation audit</li>
-        </ul>
-      </div>
-      <div class="detail-section">
-        <h3>Beyond the code</h3>
-        <p>I also set up the marketing: a "brand facts" document where every public claim links to the code that proves it, a brand and design language, and scripted pipelines for App Store screenshots and social carousels.</p>
       </div>
     `,
-    stack: ['React Native', 'Expo', 'TypeScript', 'React', 'Vite', 'FastAPI', 'Python', 'SQLAlchemy', 'Alembic', 'PostgreSQL', 'Redis', 'Docker', 'Caddy', 'Sentry', 'Google Cloud TTS'],
+    stack: ['React Native', 'Expo', 'TypeScript', 'React', 'FastAPI', 'Python', 'SQLAlchemy', 'Alembic', 'PostgreSQL', 'Redis', 'Docker', 'Caddy', 'Sentry', 'Google Cloud TTS'],
     type: 'Mobile App · Web App · Full-Stack',
     status: 'Live on the App Store'
   },
@@ -849,8 +860,8 @@ const projects = {
   purrtate: {
     emoji: '🐱',
     title: 'Purrtate',
-    badge: '🐾 Built & shipped to App Review',
-    subtitle: 'An iPhone app for cat toy rotation. Toys go into three baskets, one basket is out, and Purrtate tells you when to swap — based on each cat\'s energy level.',
+    badge: '🐾 Built solo · in App Review',
+    subtitle: 'An iPhone app for cat toy rotation. Toys go into three baskets, one basket is out, and the app tells you when to swap.',
     banner: 'media/purrtate/header.jpg',
     bannerStyle: 'object-fit:cover;background:#ecc6b8',
     links: [
@@ -858,42 +869,58 @@ const projects = {
       { label: 'Support page →', href: 'https://ma6di.github.io/Purrtate/support.html' },
       { label: 'Privacy policy →', href: 'https://ma6di.github.io/Purrtate/privacy.html' }
     ],
+    facts: [
+      ['Problem', 'Cats lose interest in toys they see every day. Rotating toys helps, but it is hard to keep track of.'],
+      ['Who it helps', 'Cat owners who want toys to feel new again without buying more.'],
+      ['My role', 'Solo: design, code, tests, release automation, and the privacy, terms and support pages.'],
+      ['Status', 'Built and submitted to App Review.']
+    ],
     highlights: [
       { n: '67', l: 'Jest unit tests on core logic' },
       { n: '0', l: 'servers, accounts or trackers' },
-      { n: '3', l: 'baskets, one out at a time' },
       { n: '2–14', l: 'day swap interval by energy' }
     ],
-    gallery: ['media/purrtate/01-today.jpg', 'media/purrtate/02-baskets.jpg', 'media/purrtate/03-add-toy.jpg', 'media/purrtate/04-energy.jpg'],
+    gallery: [
+      { src: 'media/purrtate/01-today.jpg', t: 'Today', c: 'Which basket is out, and when to swap.' },
+      { src: 'media/purrtate/02-baskets.jpg', t: 'Baskets', c: 'Three baskets, one out at a time.' },
+      { src: 'media/purrtate/03-add-toy.jpg', t: 'Add a toy', c: 'A name and a type are enough.' },
+      { src: 'media/purrtate/04-energy.jpg', t: 'Energy level', c: 'Sets the starting swap interval.' }
+    ],
     content: `
       <div class="detail-section">
-        <h3>Overview</h3>
-        <p>Cats lose interest in toys they see every day; putting toys away and bringing them back later makes them interesting again. Purrtate turns that into a simple routine. I designed, built and shipped it to App Review on my own: React Native, Expo, TypeScript and Zustand.</p>
-      </div>
-      <div class="detail-section">
-        <h3>What I built</h3>
-        <ul>
-          <li>Splits a cat's toys into <strong>three baskets</strong> and schedules swaps based on each cat's <strong>energy level</strong> (2- to 14-day intervals).</li>
-          <li><strong>Offline-first storage</strong> on the device — versioned Zustand + AsyncStorage persistence with input validation and data migrations, sanitised on every load.</li>
-          <li><strong>Local swap-day reminders</strong>, plus an interval that adapts: if the user keeps swapping early, the app offers a shorter one.</li>
-          <li><strong>Basket advice</strong> — warns when a basket has too few toys or is missing a chase, stalk or grab toy.</li>
-          <li><strong>Guided onboarding</strong> with one tip per screen, then a basket builder.</li>
-          <li>Private by design: no account, no analytics, no network requests.</li>
-        </ul>
+        <h3>Key decisions</h3>
+        <div class="decision">
+          <h4>1 · Offline-first, with no server at all</h4>
+          <p><b>Problem:</b> The app only needs a list of toys and a date. A backend would add hosting, accounts and privacy risk for no real benefit.</p>
+          <p><b>Decision:</b> All data stays on the device (Zustand + AsyncStorage). Reminders are local notifications. No account, analytics or network requests.</p>
+          <p><b>Result:</b> There is nothing to host, the app works without signal, and no personal data leaves the phone.</p>
+        </div>
+        <div class="decision">
+          <h4>2 · Saved data that survives updates</h4>
+          <p><b>Problem:</b> With no server, a bad or outdated save on the phone could crash the app, and there would be no way to fix it remotely.</p>
+          <p><b>Decision:</b> Saved data carries a version number, is migrated forward on update, and is validated and cleaned every time it loads.</p>
+          <p><b>Result:</b> Old or damaged data is repaired instead of crashing the app, and unit tests cover this.</p>
+        </div>
+        <div class="decision">
+          <h4>3 · A schedule that adapts to the cat</h4>
+          <p><b>Problem:</b> A fixed swap interval doesn't suit every cat.</p>
+          <p><b>Decision:</b> An energy level sets the starting interval (2–14 days). If the user keeps swapping early, the app offers a shorter interval.</p>
+          <p><b>Result:</b> The schedule follows how the cat actually plays.</p>
+        </div>
       </div>
       <div class="detail-section">
         <h3>Quality &amp; release</h3>
         <ul>
-          <li>Covered the core logic with <strong>67 Jest unit tests</strong> — rotation, advice, sanitising and the store</li>
-          <li>Set up <strong>EAS build and release automation</strong> — one command builds and submits to App Store Connect</li>
-          <li>Python scripts generate the App Store screenshots and artwork from source images</li>
-          <li>Wrote the privacy policy, terms of use and support pages, hosted on GitHub Pages</li>
+          <li><strong>67 Jest unit tests</strong> on rotation, basket advice, input cleaning and the store</li>
+          <li><strong>EAS build and release automation:</strong> one command builds and submits to App Store Connect</li>
+          <li>Python scripts that generate the App Store screenshots and artwork</li>
+          <li>Privacy policy, terms of use and support pages, hosted on GitHub Pages</li>
         </ul>
       </div>
     `,
     stack: ['React Native', 'Expo', 'TypeScript', 'Zustand', 'AsyncStorage', 'expo-router', 'expo-notifications', 'Jest', 'EAS Build', 'Python'],
     type: 'iOS App · Offline-first',
-    status: 'Submitted to App Review'
+    status: 'In App Review'
   },
 
   transcendence: {
@@ -1133,11 +1160,14 @@ function renderProject(id) {
     `<a href="${l.href}" target="_blank" rel="noopener" class="btn ${l.primary ? 'btn-primary' : 'btn-secondary'}">${l.label}</a>`
   ).join('');
 
+  document.getElementById('proj-facts').innerHTML = p.facts
+    ? `<div class="facts">${p.facts.map(f => `<div class="fact"><h5>${f[0]}</h5><p>${f[1]}</p></div>`).join('')}</div>` : '';
+
   document.getElementById('proj-highlights').innerHTML = p.highlights
     ? `<div class="hl-row">${p.highlights.map(h => `<div class="hl"><b>${h.n}</b><span>${h.l}</span></div>`).join('')}</div>` : '';
 
   document.getElementById('proj-gallery').innerHTML = p.gallery
-    ? `<div class="gallery">${p.gallery.map(src => `<div class="phone"><img src="${src}" alt="${p.title} screenshot" loading="lazy"></div>`).join('')}</div>` : '';
+    ? `<div class="gallery">${p.gallery.map(g => `<figure class="shot"><div class="phone"><img src="${g.src}" alt="${p.title}: ${g.t}" loading="lazy"></div><figcaption><b>${g.t}</b>${g.c}</figcaption></figure>`).join('')}</div>` : '';
 
   document.getElementById('proj-content').innerHTML = p.content;
 
@@ -1201,63 +1231,26 @@ window.addEventListener('popstate', function(e) {
   }
 })();
 
-/* ── marquee ── */
+/* ── scroll reveal + language bars ── */
 (function() {
-  const words = ['React Native', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'Expo', 'Zustand', 'Docker', 'Python', 'Jest', 'EAS', 'Automation', 'UX Design', 'C / C++', 'Linux', 'AI workflows'];
-  const html = words.map(w => `<span>${w}</span>`).join('');
-  document.getElementById('marquee').innerHTML = html + html;
-})();
-
-/* ── typewriter rotator ── */
-(function() {
-  const el = document.getElementById('rotator');
-  const phrases = ['real people.', 'language learners.', 'cat owners.', 'busy teams.', 'everyday problems.'];
-  if (reduceMotion) return;
-  let i = 0, j = phrases[0].length, deleting = true;
-  setTimeout(function tick() {
-    const word = phrases[i];
-    el.textContent = word.slice(0, j);
-    let delay = deleting ? 40 : 75;
-    if (deleting) { j--; if (j < 0) { deleting = false; i = (i + 1) % phrases.length; j = 0; delay = 300; } }
-    else { j++; if (j > phrases[i].length) { deleting = true; j = phrases[i].length; delay = 2200; } }
-    setTimeout(tick, delay);
-  }, 2600);
-})();
-
-/* ── scroll reveal + counters + language bars ── */
-(function() {
-  const countUp = el => {
-    const target = +el.dataset.count, suffix = el.dataset.suffix || '';
-    if (reduceMotion) { el.textContent = target.toLocaleString('en-US') + suffix; return; }
-    const start = performance.now(), dur = 1600;
-    const step = now => {
-      const t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 4);
-      el.textContent = Math.round(target * e).toLocaleString('en-US') + suffix;
-      if (t < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
       en.target.classList.add('in');
-      en.target.querySelectorAll('[data-count]').forEach(countUp);
       io.unobserve(en.target);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 
-/* ── scroll progress ── */
-(function() {
-  const bar = document.getElementById('progress');
-  const update = () => {
-    const h = document.documentElement.scrollHeight - innerHeight;
-    bar.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
-  };
-  addEventListener('scroll', update, { passive: true });
-  update();
-})();
+/* ── real links → in-page navigation (modifier clicks still open new tabs) ── */
+document.addEventListener('click', e => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest('a[data-project], a[data-home]');
+  if (!a) return;
+  e.preventDefault();
+  if (a.dataset.project) showProject(a.dataset.project); else showHome();
+});
 
 /* ── spotlight on feature cards ── */
 document.querySelectorAll('[data-spot]').forEach(el => {
@@ -1268,36 +1261,24 @@ document.querySelectorAll('[data-spot]').forEach(el => {
   });
 });
 
-/* ── 3D tilt on project cards ── */
-if (!reduceMotion && matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('[data-tilt]').forEach(el => {
-    el.addEventListener('pointermove', e => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      el.style.transform = `perspective(900px) rotateX(${-y * 6}deg) rotateY(${x * 8}deg) translateY(-6px)`;
-    });
-    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-  });
-}
-
-/* ── Purrtate basket rotation ── */
+/* ── Purrtate basket rotation (while hovered) ── */
 (function() {
-  const baskets = document.querySelectorAll('#baskets .basket');
-  if (reduceMotion || !baskets.length) return;
-  let k = 0;
-  setInterval(() => {
-    baskets[k].classList.remove('out');
-    k = (k + 1) % baskets.length;
-    baskets[k].classList.add('out');
-  }, 2400);
+  const box = document.getElementById('baskets');
+  if (reduceMotion || !box) return;
+  const baskets = box.querySelectorAll('.basket'), card = box.closest('.feature');
+  let k = 0, timer = null;
+  const step = () => { baskets[k].classList.remove('out'); k = (k + 1) % baskets.length; baskets[k].classList.add('out'); };
+  card.addEventListener('mouseenter', () => { if (!timer) { step(); timer = setInterval(step, 1600); } });
+  card.addEventListener('mouseleave', () => { clearInterval(timer); timer = null; });
 })();
 
 /* ── easter egg: click the logo dot for confetti ── */
 (function() {
   const dot = document.querySelector('.nav-logo span');
   dot.addEventListener('click', e => {
-    if (reduceMotion) return;
+    e.preventDefault();
     e.stopPropagation();
+    if (reduceMotion) return;
     const r = dot.getBoundingClientRect();
     const emojis = ['🧶', '🐾', '📚', '✨', '🦉', '🐱'];
     for (let n = 0; n < 18; n++) {
