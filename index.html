@@ -92,7 +92,7 @@ nav {
 @media(max-width: 700px) { .nav-links { display: none; } }
 
 /* ── HERO ── */
-header { padding: 80px 0 40px; position: relative; }
+header { padding: 80px 0 40px; position: relative; overflow-x: clip; }
 .blobs { position: absolute; inset: -40px 0 0 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
 .blob.b1 { width: 420px; height: 420px; background: var(--accent-light); top: -60px; left: -80px; }
@@ -113,9 +113,11 @@ header { padding: 80px 0 40px; position: relative; }
 .dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: inherit; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
 .dot.amber { background: #f59e0b; }
 @keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
-h1 { font-size: 3.4rem; line-height: 1.06; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+h1 { font-size: 3.2rem; line-height: 1.06; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
 h1 em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 800; letter-spacing: -1.5px; color: var(--accent); }
-.rotator { white-space: nowrap; }
+.rot-wrap { display: inline-grid; vertical-align: top; }
+.rot-wrap > span { grid-area: 1 / 1; white-space: nowrap; }
+.rot-ghost { visibility: hidden; padding-right: 10px; }
 .caret { display: inline-block; width: 3px; height: .9em; background: var(--accent); margin-left: 4px; vertical-align: -0.08em; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .subtitle { max-width: 590px; color: var(--muted); font-size: 1.06rem; margin-bottom: 28px; }
@@ -392,12 +394,12 @@ footer a:hover { text-decoration: underline; }
 @media(max-width: 800px) {
   .hero { grid-template-columns: 1fr; }
   .orbit-wrap { margin: 10px auto 0; transform: scale(.85); }
-  h1 { font-size: 2.05rem; letter-spacing: -1px; }
+  h1 { font-size: 1.9rem; letter-spacing: -1px; }
+  .d-br { display: none; }
   .section-title { font-size: 1.55rem; }
   .feature h3 { font-size: 1.8rem; }
   .stat-n { font-size: 1.5rem; }
   .container { padding: 0 20px; }
-  .rotator { white-space: normal; }
   .detail-grid { grid-template-columns: 1fr; }
   .project-meta { grid-template-columns: 1fr; }
   .project-title { font-size: 2.2rem; }
@@ -443,7 +445,7 @@ footer a:hover { text-decoration: underline; }
 <div class="hero">
   <div>
     <div class="badge"><span class="dot"></span> 2 iOS apps built solo · Flewi live on the App Store</div>
-    <h1>I design, build &amp; ship<br>software for <em class="rotator" id="rotator">real people.</em><span class="caret"></span></h1>
+    <h1>I design, build<br class="d-br"> &amp; ship apps for<br class="d-br"> <em class="rot-wrap"><span class="rot-ghost" aria-hidden="true">language learners.</span><span class="rot-ghost" aria-hidden="true">everyday problems.</span><span><span id="rotator">real people.</span><span class="caret"></span></span></em></h1>
     <p class="subtitle">I'm Mahdi, a software engineer in Berlin and <strong>42 Berlin</strong> graduate. I take products from idea to the App Store on my own — <strong>UX, mobile, backend, testing, release and automation</strong> — and before code, I spent five years supervising construction sites.</p>
     <div class="buttons">
       <a href="#apps" onclick="return jump('apps')" class="btn btn-primary">See my apps ↓</a>
