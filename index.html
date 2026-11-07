@@ -374,6 +374,10 @@ footer a:hover { text-decoration: underline; }
 .decision p { font-size: .93rem; margin-bottom: 6px; }
 .decision p:last-child { margin-bottom: 0; }
 .decision b { color: var(--text); font-weight: 600; }
+.loop { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0 20px; }
+.loop span { font-size: .8rem; font-weight: 500; padding: 5px 11px; border-radius: 999px; background: white; border: 1px solid var(--border); color: var(--text); }
+.loop span:not(:last-child)::after { content: '→'; margin-left: 9px; color: var(--accent); }
+.loop span:last-child { background: var(--accent-light); border-color: #99f6e4; color: var(--accent); }
 .gallery::-webkit-scrollbar { height: 6px; }
 .gallery::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
 .detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
@@ -494,6 +498,7 @@ footer a:hover { text-decoration: underline; }
         <li>Custom SRS scheduler, article-confusion test and learning-health analytics</li>
         <li>React Native iOS app + React web/PWA on a FastAPI · PostgreSQL · Redis backend</li>
         <li>Self-hosted with Docker, Caddy, Sentry, backups and 500+ backend tests</li>
+        <li><strong>Now building:</strong> an AI-driven loop that links marketing, user analytics and UX improvements</li>
       </ul>
       <div class="tech">
         <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span>
@@ -852,8 +857,30 @@ const projects = {
           <li><strong>iOS app</strong> (React Native/Expo) with Sign in with Apple and Google, in-app subscriptions and reminders, plus a React web app that installs like an app (PWA).</li>
         </ul>
       </div>
+      <div class="detail-section">
+        <h3>Now building: an AI-driven growth and improvement loop</h3>
+        <p>I'm connecting marketing, product analytics and UX design into one loop that learns from real user behaviour, instead of treating them as separate jobs. Success means real installs, completed onboarding, regular study sessions and long-term retention, not likes or views.</p>
+        <div class="loop" aria-label="Growth loop">
+          <span>Market research</span><span>Content strategy</span><span>Content creation</span><span>Publishing</span><span>Audience analysis</span><span>App installs</span><span>User behaviour</span><span>UX improvements</span><span>Retention</span><span>Updated strategy ↺</span>
+        </div>
+        <p><strong>Built so far:</strong></p>
+        <ul>
+          <li>A marketing knowledge base where every public claim is checked against the code that proves it, plus brand, voice and content-planning guides</li>
+          <li>60+ Python scripts that generate App Store screenshots, social posts and short videos from real app screens</li>
+          <li>A local dashboard (FastAPI + Vite) that reads the marketing docs, runs builds and uses an AI agent (Claude) to help plan and draft content</li>
+          <li>An experiment log that records what was published and what happened, so each post is no longer a fresh guess</li>
+        </ul>
+        <p><strong>Next steps:</strong></p>
+        <ul>
+          <li><strong>Privacy-friendly product analytics</strong> that only track with consent: anonymous, timestamped events from first visit through install, sign-up, onboarding, adding cards and study sessions, to see where people hesitate or drop off</li>
+          <li><strong>Linking marketing to real outcomes:</strong> connecting each post's engagement (saves, shares, clicks) to app visits, downloads, sign-ups and active users</li>
+          <li><strong>AI-assisted UX reviews</strong> that use this data to spot confusing screens and unnecessary steps, and suggest targeted fixes</li>
+          <li><strong>A continuous experiment loop:</strong> AI proposes and ranks hypotheses, and I measure the result of each change</li>
+        </ul>
+        <p>Automation handles the repetitive work. I keep the final decision on publishing and product changes, and tracking stays privacy-conscious and GDPR-compliant.</p>
+      </div>
     `,
-    stack: ['React Native', 'Expo', 'TypeScript', 'React', 'FastAPI', 'Python', 'SQLAlchemy', 'Alembic', 'PostgreSQL', 'Redis', 'Docker', 'Caddy', 'Sentry', 'Google Cloud TTS'],
+    stack: ['React Native', 'Expo', 'TypeScript', 'React', 'FastAPI', 'Python', 'SQLAlchemy', 'Alembic', 'PostgreSQL', 'Redis', 'Docker', 'Caddy', 'Sentry', 'Google Cloud TTS', 'Claude (AI agent)'],
     type: 'Mobile App · Web App · Full-Stack',
     status: 'Live on the App Store'
   },
