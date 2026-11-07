@@ -296,7 +296,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .tl-item { position: relative; margin-bottom: 20px; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
 .tl-item::before { content: ''; position: absolute; left: -27px; top: 26px; width: 12px; height: 12px; border-radius: 50%; background: white; border: 3px solid var(--accent); }
 .tl-item.now::before { background: var(--accent); box-shadow: 0 0 0 6px var(--accent-light); }
-.tl-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.tl-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
 .tl-role { font-family: 'Syne', sans-serif; font-weight: 700; }
 .tl-org { color: var(--muted); font-size: .9rem; }
 .tl-item ul { padding-left: 18px; margin-top: 8px; }
@@ -320,7 +320,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .edu-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; flex-wrap: wrap; gap: 8px; }
 .edu-school { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
 .edu-degree { color: var(--muted); font-size: .92rem; margin-bottom: 8px; }
-.edu-date { font-size: .8rem; color: var(--muted); white-space: nowrap; background: var(--tag-bg); padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
+.edu-date { line-height: 1.6; font-size: .8rem; color: var(--muted); white-space: nowrap; background: var(--tag-bg); padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
 .edu-desc { color: var(--muted); font-size: .92rem; line-height: 1.65; margin-bottom: 10px; }
 .edu-bullets { padding-left: 18px; margin: 0; }
 .edu-bullets li { color: var(--muted); font-size: .9rem; line-height: 1.65; margin-bottom: 4px; }
